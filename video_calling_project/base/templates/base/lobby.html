@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+    <section id="form-container">
+
+        <img id="logo" src="{% static 'images/chat-icon.png' %}"/>
+
+        <div class="login-box">
+            <h2>Submit</h2>
+            <form>
+              <div class="user-box">
+                <input type="text" name="" required="">
+                <label>Enter Your Room ID</label>
+              </div>
+              <div class="user-box">
+                <input type="password" name="" required="">
+                <label>Enter Your Name </label>
+              </div>
+              <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+              </a>
+            </form>
+          </div>
+    </section>
+</main>
+
+{% endblock %}
