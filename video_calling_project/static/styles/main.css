@@ -165,7 +165,10 @@ html {
       bottom: 100%;
     }
   }
-  
+
+#form-container {
+    margin-left: 150px;
+  }
 
   /* ----------------- Room Styling ------------------*/
 #room-name-wrapper{
@@ -189,7 +192,7 @@ html {
     border: 1px solid rgb(75, 93, 172);
     border-radius: 5px;
     margin: 2px;
-    background-color: rgba(198,202,219,1);
+    background-color: rgb(193, 199, 226);
     position: relative; 
     justify-content: center
 }
@@ -200,4 +203,29 @@ html {
     height: 85vh;
     width: 95%;
    
+}
+
+
+.form-field{
+  margin-bottom: 20px;
+}
+
+.form-field label{
+  font-size: 16px;
+  line-height: 1.7em;
+}
+
+.form-field input{
+  width: 100%;
+  border:2px solid rgba(198,202,219,1);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-field input[type='submit']{
+  background-color: rgb(75, 93, 172);
+  border:none;
+  color: #fff;
 }
