@@ -1,64 +1,19 @@
 from django.shortcuts import render
 import boto3
-from django.http import JsonResponse
+import csv
+from django.http import JsonResponse, HttpResponse
 from .models import computer_bsc
-
+from .aws_connections import *
 import io, os
+import glob
 
 
-# Aws credentials 
-
-ACCESS_KEY = 'AKIAUPDHPMAWFKG6OG6P'
-SECRET_ACCESS_KEY = '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'
-
-
-# we are creating a s3 client using the boto3, with our aws account. But this should
-# be institutions aws account.
-S3_CLIENT = boto3.client(
-        's3',
-        region_name = 'ap-south-1',
-        aws_access_key_id = ACCESS_KEY,
-        aws_secret_access_key = SECRET_ACCESS_KEY,
-    )
-
-
-session = boto3.Session(
-
-    aws_access_key_id = ACCESS_KEY,
-    aws_secret_access_key = SECRET_ACCESS_KEY  
-    
-                            )
-
-
-
+# creating a s3 client connection using boto3.
+S3_CLIENT = create_s3_client()
 
 # pretend it is english exam
 current_exam = 'english'
 
-
-tables = {
-    'computer_bsc' : computer_bsc
-}
-
-
-# Helper function for post_url
-def generate_url(filename) :
-    
-    # Just specify folder_name:
-    # key is just a name for the file in s3 bucket, in our case, name or key of the file
-    # should be the student mailid or Rollno with current exam.
-
-
-    # pretend count is the rollno of the student.
-   
-    # generating the pre-signed-url from the s3 aws.
-    url = S3_CLIENT.generate_presigned_url(
-        ClientMethod='put_object',
-        Params={'Bucket': 'fromjs.upload', 'Key': f"{filename}.mp4"},
-        ExpiresIn=60,
-    )
-
-    return url
 
 # This will send the json response to the frontend
 
@@ -69,7 +24,7 @@ def post_url(request) :
     bucket_name = 'b.n'
 
     # this is the video filename
-    name = "shilash.bscit2" 
+    name = "shilash.bscit1" 
 
 
     # instead of using the database, we could just use the csv file to store the filename
@@ -79,35 +34,42 @@ def post_url(request) :
 
     # example filename ---> subject + dept
 
-    videos_filenames_file = "computer_bscit"
+    videos_filenames_file = "computer_bscit.csv"
 
     # checking is there is filename(key_ present in this name in s3 bucket.
 
     #Creating Session With Boto3. to put new file or new content.
    
-
-    try :
-        print("ss")
-        S3_CLIENT.head_object(Bucket = bucket_name, Key = videos_filenames_file)
-
-    except :
-        print("not succeed")
-        with open('files/new.csv', 'wb') as f :
-            name = bytes(name, 'utf-8')
-            f.write(name)
+    # this is for the safety purpose, we are uploading the students file to the 
+    # s3 bucket
+#    try :
         
-    else :
-        with open('files/new.csv', 'a') as f:
+
+        #S3_CLIENT.head_object(Bucket = bucket_name, Key = videos_filenames_file)
+
+ #   except :
+    v_filepath = os.path.join('files', videos_filenames_file)
+    if not os.path.isfile(v_filepath) : 
+        print("yea")
+        with open(f'files/{videos_filenames_file}', 'wb') as f :
             writer = csv.writer(f)
             writer.writerow(name)
-
-    finally :
-        file_ = 'files/new.csv'
-        S3_CLIENT.upload_file(file_, bucket_name, videos_filenames_file)
+        
+    else :
+        print(":E")
+        name_ = list(name.split(" "))
+        with open(f'files/{videos_filenames_file}', 'a') as f:
+            writer = csv.writer(f)
+            writer.writerow(name_)
+        
+ #   finally :
+  #      file_ = f'files/{videos_filenames_file}.csv'
+   #     S3_CLIENT.upload_file(file_, bucket_name, videos_filenames_file)
 
     # Saving the filename into the table, so we can use it later.
    # record = computer_bsc(filename = name)
     #record.save()
+    #console.log(name, "name")
     url = generate_url(name)
     return JsonResponse(url, safe = False)
 
@@ -121,25 +83,44 @@ def videos_page(request) :
     return render(request, 'test_page/view_videos.html')
 
 
-# this will query the database for the filenames and give it to the frontend.
-# this tablename is hardcoded from frontend, but we will soon keep a dropdown boxes 
-# for it.
 def get_filenames(request) :
-    print(request, "request")
-    tablename = request.GET.get('name')
+    filename = request.GET.get('name')
+    filepath = os.path.join('files', filename)
 
-    print(tablename, "tablema,e")
+   # /django_projects/video_calling_project/files
+    try:    
+        with open(filepath, 'r') as f:
+            csv_reader = csv.reader(f)
+            
+            filenames_ = [ ]
+            for content_list in csv_reader :
+                print(csv_reader, str(content_list))
+                content = ''.join(content_list) + ','
+               # print(c)
+                filenames_.append(content)
+                       
+        file_data = filenames_
 
-    records = tables[tablename].objects.all()
-    print(records)
+        # sending response 
+        response = HttpResponse(file_data, content_type='application/vnd.ms-excel')
+        response['Content-Disposition'] = f'attachment; filename="{filename}"'
+
+    except IOError:
+        # handle file not exist case here
+        response = HttpResponseNotFound('<h1>File not exist</h1>')
+
+    return response
+    
+
+    
 
 
 
 
 # tomorrow 
 
-# We need to add every bucket key into our database, we need a different database and
-# bucket for each subject
+# We need to add every bucket key into our csv file we need a different csv file and
+# object for each subject
 # eg :
     # if subject = "english" -> need sepearate bucket and database 
 

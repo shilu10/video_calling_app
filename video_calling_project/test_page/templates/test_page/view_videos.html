@@ -1,28 +1,53 @@
 <html>
+    {% load static %}
     <head>
         <title>
             videos
         </title>
+        <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
     </head>
 
     <body>
+        <h2>Video inserted with JavaScript</h2>
+        
+        <div class = "video-grid">
+        <div id="myVideo"></div>
+    </div>
 
-        <video width="320" height="240" controls>
-            <source src="https://d27wu8ow2dki7c.cloudfront.net/shilash.bscit.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-          </video>
-
+       
     </body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         console.log("running")
-        const name = "computer_bsc"
+        const name = "computer_bscit.csv"
 
         const get_filenames = async() => {
         console.log("window", window)
-        await axios.get('filenames/', { params: { name: name } })
-        
+        const response = await axios.get('filenames/', { params: { name: name } })
+        var data = response.data.split(',')
+        data.pop()
+        data.forEach(data => {
+
+            var c = document.getElementById ("myVideo");
+// Create an element <video>
+var v = document.createElement ("video");
+// Set the attributes of the video
+v.src = `https://d27wu8ow2dki7c.cloudfront.net/${data}.mp4`
+//v.classList.add('promo')
+v.height = 300;
+console.log(v.videoHeight)
+v.width = 300;
+v.controls = true;
+// Add the video to <div>
+c.appendChild (v);
+            
+        })
     }
     get_filenames()
         </script>
 </html>
+
+
+
+
+
