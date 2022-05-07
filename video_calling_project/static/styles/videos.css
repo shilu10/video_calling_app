@@ -1,0 +1,27 @@
+.gridWrap {
+    display: grid;
+    grid-template-areas: 'header header''promo login''footer footer';
+    grid-template-rows: 40% auto 10%;
+    grid-gap: 10px;
+    min-height: 100vh;
+  }
+  
+  .header {
+    background-color: indianred;
+    grid-area: header;
+  }
+  
+  .promo {
+    background-color: aquamarine;
+    grid-area: promo;
+  }
+  
+  .login {
+    background-color: coral;
+    grid-area: login;
+  }
+  
+  .footer {
+    background-color: teal;
+    grid-area: footer;
+  }
