@@ -2,71 +2,275 @@
 {% load static %}
 
 <head>
+  
+  
    <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
-   
    <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+   <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
+ 
 </head>
-
 <body>
-   <div class="ui fluid search selection dropdown">
-      <input type="hidden" name="country">
-      <i class="dropdown icon"></i>
-      <div class="default text">Select Country</div>
-      <div class="menu">
-      <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
-      <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
-      <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+  <div class="nav">
+    <ul>
+      <li><a href="#" class="nav-link">Home</a></li>
+    </ul>
+    
+  </div>
+  
+  
+  <div style = "position:relative; left:10px; top:120px" class="video-box">
+    <div class="player" id="player">
+      <video class="player_video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+      <!-- <video class="player_video viewer" src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" poster="https://pixabay.com/images/id-4583946/"></video> -->
+      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"></video> -->
+      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-28745_source.mp4?attachment"></video> -->
+      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment"></video> -->
 
+      <div class="player_controls">
+        <div class="progress-range" title="Jump-to">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="left-controls">
+          <button class="player_button toggle" title='Toggle Play'><i class="fa fa-play" title="Play" id="play-btn"></i></button>
+          <button class="player_button stop" title='Start over'><i class="fa fa-stop" title="Play" id="stop-btn"></i></button>
+          <button class="player_button speaker"><i id="speaker_icon" class="fa fa-volume-up" aria-hidden="true"></i></button>
+          <input type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="1"></input>
+        </div>
+        <div class="right-controls">
+
+          <!-- I don't see the need for spped changes but I'm leaving the code in for now -->
+           <button class="player_button rate_icon"><i class="fa fa-spinner" aria-hidden="true"></i></button>
+          <input type="range" name="playbackRate" class="player_slider" min="0.5" max="2" step="0.1" value="1"></input> 
+          
+          
+          
+          <button data-skip="-10" class="player_button"><i class="fa fa-fast-backward" aria-hidden="true"></i></button>
+          <button data-skip="10" class="player_button"><i class="fa fa-fast-forward" aria-hidden="true"></i></button>
+          <div class="time">
+            <span class="time-elapsed">00:00 / </span>
+            <span class="time-duration">2:38</span>
+          </div>
+          <button class="player_button screenSize"><i id="screenSize_icon" class="fa fa-expand" aria-hidden="true"></i></button>
+        </div>
+      </div>
     </div>
-     </div>
+  </div>
 
-<!-- Not including the default CSS -->
-<div >
-<video id="my_video_1" class="video-js vjs-default-skin" 
-    controls preload="none" width="640px" height="267px" data-setup='{}'
-    poster='http://video-js.zencoder.com/oceans-clip.jpg'>
-  <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-  <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
-</video>
-</div>
-   
-<style>
-/* Show the controls (hidden at the start by default) */
-.video-js .vjs-control-bar { display: block; }
+  <!-- <script src="/Users/CMurphy/Desktop/JavaScript30-Challenge/Custom HTML5 Video Player/Custom HTML5 Video Player.js"></script> -->
 
-  /* Make the CDN fonts accessible from the CSS */
-@font-face {
-  font-family: 'VideoJS';
-  src: url('https://vjs.zencdn.net/f/1/vjs.eot');
-  src: url('https://vjs.zencdn.net/f/1/vjs.eot?#iefix') format('embedded-opentype'), 
-    url('https://vjs.zencdn.net/f/1/vjs.woff') format('woff'),     
-    url('https://vjs.zencdn.net/f/1/vjs.ttf') format('truetype');
-}
 
-/* Make the demo a little prettier */
-body { background: #222; text-align: center; }
-.video-js { margin: 20px auto; }
-
-</style>
 </body>
 
+<script>
+  /*target elements*/
+const player = document.querySelector('.player');
+const video = player.querySelector('.viewer');
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+const progressRange = document.querySelector('.progress-range');
+const progressBar = document.querySelector('.progress-bar');
+const currentTime = document.querySelector('.time-elapsed');
+const duration = document.querySelector('.time-duration');
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"></script>
+const playBtn = document.getElementById('play-btn');
+const stopBtn = player.querySelector('.stop');
 
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+const skipButtons = player.querySelectorAll('[data-skip]');
+
+const speakerIcon = player.querySelector('#speaker_icon');
+const ranges = player.querySelectorAll('.player_slider');
+/* MUTE button */
+const speaker = player.querySelector('.speaker');
+const volInput = player.querySelector('input[name="volume"]')
+//const speakerIcon = player.querySelector('#speaker_icon'); 
+
+// show play button when paused
+function showPlayIcon() {
+  playBtn.classList.replace('fa-pause', 'fa-play');
+  playBtn.setAttribute('title', 'Play');
+}
+
+// toggle between play and pause
+function togglePlay() {
+  if (video.paused) {
+    video.play();
+    playBtn.classList.replace('fa-play', 'fa-pause');
+    playBtn.setAttribute('title', 'Pause');
+  } else {
+    video.pause();
+    showPlayIcon();
+  }
+}
+
+// Stop video
+function stopVideo() {
+  video.currentTime = 0;
+  video.pause();
+}
+
+// not sure, is this for FF and REW?
+function skip() {
+  video.currentTime += +(this.dataset.skip);
+}
+
+// volume functions
+function handleRangeUpdate() {
+  video[this.name] = this.value;
+  (video['volume'] === 0 ? speakerIcon.className = "fa fa-volume-off" :
+    speakerIcon.className = "fa fa-volume-up")
+}
+
+let muted = false;
+
+function mute() {
+  if (!muted) {
+    video['volume'] = 0;
+    volInput.value = 0;
+    speakerIcon.className = "fa fa-volume-off"
+    muted = true;
+  } else {
+    video['volume'] = 1;
+    volInput.value = 1;
+    muted = false;
+    speakerIcon.className = "fa fa-volume-up"
+  }
+}
+
+// update progress bar as the video plays
+function updateProgress() {
+  progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+  currentTime.textContent = `${displayTime(video.currentTime)} /`;
+  duration.textContent = `${displayTime(video.duration)}`;
+}
+// Calculate display time format
+function displayTime(time) {
+  const minutes = Math.floor(time / 60);
+  let seconds = Math.floor(time % 60);
+  seconds = seconds > 9 ? seconds : `0${seconds}`;
+  return `${minutes}:${seconds}`;
+}
+
+// Click to seek within the video
+function setProgress(e) {
+  const newTime = e.offsetX / progressRange.offsetWidth;
+  progressBar.style.width = `${newTime * 100}%`;
+  video.currentTime = newTime * video.duration;
+}
+
+function scrub(event) {
+  const scrubTime = (event.offsetX / progressRange.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
+}
+
+// Spacebar used to play and pause
+document.body.onkeyup = function (e) {
+  if (e.keyCode == 32) {
+    togglePlay();
+  }
+}
+
+// =======================
+video.addEventListener('timeupdate', updateProgress);
+video.addEventListener('canplay', updateProgress);
+progressRange.addEventListener('click', setProgress);
+// ===================
+/*functions linked to elements*/
+// play, pause, stop
+video.addEventListener('click', togglePlay);
+video.addEventListener('keydown', (event) => event.keyCode === 32 && togglePlay());
+playBtn.addEventListener('click', togglePlay);
+stopBtn.addEventListener('click', stopVideo);
+// skip forward or backward
+skipButtons.forEach(button => button.addEventListener('click', skip));
+// volume
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+speaker.addEventListener('click', mute)
+
+// progress bar controls
+let mouseDown = false;
+progressRange.addEventListener('click', scrub);
+progressRange.addEventListener('mousemove', (event) => mouseDown && scrub(event));
+progressRange.addEventListener('mousedown', () => mouseDown = true);
+progressRange.addEventListener('mouseup', () => mouseDown = false);
+
+//fullscreen mode 
+const screen_size = player.querySelector('.screenSize');
+const controls = player.querySelector('.player_controls');
+const screenSize_icon = player.querySelector('#screenSize_icon');
+
+function changeScreenSize() {
+  if (player.mozRequestFullScreen) {
+
+    player.mozRequestFullScreen();
+    //change icon
+    screenSize_icon.className = "fa fa-compress";
+    /*control panel once fullscreen*/
+    video.addEventListener('mouseout', () => controls.style.transform = 'translateY(100%) translateX(-5px)');
+    video.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
+    controls.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
+    screen_size.addEventListener('click', () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+        screenSize_icon.className = "fa fa-expand";
+      }
+    });
+  } else if (player.webkitRequestFullScreen) {
+
+    player.webkitRequestFullScreen();
+
+    screenSize_icon.className = "fa fa-compress";
+
+    video.addEventListener('mouseout', () => controls.style.transform = 'translateY(100%) translateX(-5px)');
+    video.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
+    controls.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
+    screen_size.addEventListener('click', () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+        screenSize_icon.className = "fa fa-expand";
+      }
+    });
+  }
+}
+screen_size.addEventListener('click', changeScreenSize);
+/* end full screen */
 
 
+/*play rate button - NOT INTERESTED IN THESE CONTROLS */
+ const rate_icon = player.querySelector('.rate_icon')
+ const rateInput = player.querySelector('input[name="playbackRate"]')
+ let rateChanged = false;
+
+ function changeRate() {
+   if (!rateChanged) {
+     video['playbackRate'] = 0.5;
+     rateInput.value = 0.5;
+     rateChanged = true;
+   } else {
+     video['playbackRate'] = 1;
+     rateInput.value = 1;
+     rateChanged = false;
+   }
+ }
+
+ rate_icon.addEventListener('click', changeRate)
+/**/
+
+
+</script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
 
 </html>
+
+
+
 
 
 
