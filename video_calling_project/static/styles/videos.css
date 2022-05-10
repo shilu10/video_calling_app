@@ -1,27 +1,24 @@
-.gridWrap {
-    display: grid;
-    grid-template-areas: 'header header''promo login''footer footer';
-    grid-template-rows: 40% auto 10%;
-    grid-gap: 10px;
-    min-height: 100vh;
-  }
-  
-  .header {
-    background-color: indianred;
-    grid-area: header;
-  }
-  
-  .promo {
-    background-color: aquamarine;
-    grid-area: promo;
-  }
-  
-  .login {
-    background-color: coral;
-    grid-area: login;
-  }
-  
-  .footer {
-    background-color: teal;
-    grid-area: footer;
-  }
+/* * The body style is just for the
+ * background color of the codepen.
+ * Do not include in your code.
+ */
+ body {
+  background-color: #111;
+  color: #fff;
+}
+/*
+ * Styles essential to the sample
+ * are below
+ */
+#backButton img {
+  margin-top: -7px;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+#forwardButton img {
+  margin-top: -7px;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}

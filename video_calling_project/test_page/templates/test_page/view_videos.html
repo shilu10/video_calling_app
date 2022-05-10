@@ -1,52 +1,72 @@
-<html>
-    {% load static %}
-    <head>
-        <title>
-            videos
-        </title>
-        <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
-    </head>
+<!DOCTYPE html>
+{% load static %}
 
-    <body>
-        <h2>Video inserted with JavaScript</h2>
-        
-        <div class = "video-grid">
-        <div id="myVideo"></div>
+<head>
+   <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
+   
+   <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+</head>
+
+<body>
+   <div class="ui fluid search selection dropdown">
+      <input type="hidden" name="country">
+      <i class="dropdown icon"></i>
+      <div class="default text">Select Country</div>
+      <div class="menu">
+      <div class="item" data-value="af"><i class="af flag"></i>Afghanistan</div>
+      <div class="item" data-value="ax"><i class="ax flag"></i>Aland Islands</div>
+      <div class="item" data-value="al"><i class="al flag"></i>Albania</div>
+
     </div>
+     </div>
 
-       
-    </body>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script>
-        console.log("running")
-        const name = "computer_bscit.csv"
+<!-- Not including the default CSS -->
+<div >
+<video id="my_video_1" class="video-js vjs-default-skin" 
+    controls preload="none" width="640px" height="267px" data-setup='{}'
+    poster='http://video-js.zencoder.com/oceans-clip.jpg'>
+  <source src="https://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+  <source src="https://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
+</video>
+</div>
+   
+<style>
+/* Show the controls (hidden at the start by default) */
+.video-js .vjs-control-bar { display: block; }
 
-        const get_filenames = async() => {
-        console.log("window", window)
-        const response = await axios.get('filenames/', { params: { name: name } })
-        var data = response.data.split(',')
-        data.pop()
-        data.forEach(data => {
+  /* Make the CDN fonts accessible from the CSS */
+@font-face {
+  font-family: 'VideoJS';
+  src: url('https://vjs.zencdn.net/f/1/vjs.eot');
+  src: url('https://vjs.zencdn.net/f/1/vjs.eot?#iefix') format('embedded-opentype'), 
+    url('https://vjs.zencdn.net/f/1/vjs.woff') format('woff'),     
+    url('https://vjs.zencdn.net/f/1/vjs.ttf') format('truetype');
+}
 
-            var c = document.getElementById ("myVideo");
-// Create an element <video>
-var v = document.createElement ("video");
-// Set the attributes of the video
-v.src = `https://d27wu8ow2dki7c.cloudfront.net/${data}.mp4`
-//v.classList.add('promo')
-v.height = 300;
-console.log(v.videoHeight)
-v.width = 300;
-v.controls = true;
-// Add the video to <div>
-c.appendChild (v);
-            
-        })
-    }
-    get_filenames()
-        </script>
+/* Make the demo a little prettier */
+body { background: #222; text-align: center; }
+.video-js { margin: 20px auto; }
+
+</style>
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+
+
 </html>
-
 
 
 
