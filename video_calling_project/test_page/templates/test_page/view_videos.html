@@ -20,38 +20,22 @@
 
   <!--Navbar-->
   <body>
-    <div class="nav">
-      <ul>
-        <li><a href="#" class="nav-link">Home</a></li>
-      </ul>
-      
-    </div>
-
-
-  <!--This is for Search Selection-->
-  <div class="container">
-    <div class="row">
-      <h2 style="font-family: 'Montserrat', sans-serif; color: bisque;">Search for the Video by Student's Roll Number</h2>
-      <hr />
-    </div>
-
-    <div class="row-fluid">
-      <select class="selectpicker" data-show-subtext="true" data-live-search="true">
-        <option>John Smith</option>
-        <option>Alex Johnson</option>
-        <option>Kevin Warren</option>
-        <option>Super Mario</option>
-        <option>Allen Martinez</option>
-        <option>Marvin Liberty</option>
-      </select>
-    </div>
-  </div>
-
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+      <a class="navbar-brand" href="#">
+        <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
+        BootstrapBay
+      </a>
+      <form class="form-inline">
+        <input class="form-control mr-2" type="search" placeholder="Search for video by Rollno" aria-label="Search">
+        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </nav>
+    
 
 <!--For the Video-->
-  <div style = "position:relative; top:1px" class="video-box">
+  <div style = "position:relative; top:20px" class="video-box">
     <div class="player" id="player">
-      <video class="player_video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+      <video class="player_video viewer"></video>
       <!-- <video class="player_video viewer" src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" poster="https://pixabay.com/images/id-4583946/"></video> -->
       <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"></video> -->
       <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-28745_source.mp4?attachment"></video> -->
