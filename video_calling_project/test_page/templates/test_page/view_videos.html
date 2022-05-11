@@ -3,24 +3,53 @@
 
 <head>
   
-  
-   <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
+   
+  <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
    <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/css/bootstrap-select.css" />
+
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
  
 </head>
-<body>
-  <div class="nav">
-    <ul>
-      <li><a href="#" class="nav-link">Home</a></li>
-    </ul>
-    
+
+  <!--Navbar-->
+  <body>
+    <div class="nav">
+      <ul>
+        <li><a href="#" class="nav-link">Home</a></li>
+      </ul>
+      
+    </div>
+
+
+  <!--This is for Search Selection-->
+  <div class="container">
+    <div class="row">
+      <h2 style="font-family: 'Montserrat', sans-serif; color: bisque;">Search for the Video by Student's Roll Number</h2>
+      <hr />
+    </div>
+
+    <div class="row-fluid">
+      <select class="selectpicker" data-show-subtext="true" data-live-search="true">
+        <option>John Smith</option>
+        <option>Alex Johnson</option>
+        <option>Kevin Warren</option>
+        <option>Super Mario</option>
+        <option>Allen Martinez</option>
+        <option>Marvin Liberty</option>
+      </select>
+    </div>
   </div>
-  
-  
-  <div style = "position:relative; left:10px; top:120px" class="video-box">
+
+
+<!--For the Video-->
+  <div style = "position:relative; top:1px" class="video-box">
     <div class="player" id="player">
       <video class="player_video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
       <!-- <video class="player_video viewer" src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" poster="https://pixabay.com/images/id-4583946/"></video> -->
@@ -63,210 +92,12 @@
 
 </body>
 
-<script>
-  /*target elements*/
-const player = document.querySelector('.player');
-const video = player.querySelector('.viewer');
 
-const progressRange = document.querySelector('.progress-range');
-const progressBar = document.querySelector('.progress-bar');
-const currentTime = document.querySelector('.time-elapsed');
-const duration = document.querySelector('.time-duration');
-
-const playBtn = document.getElementById('play-btn');
-const stopBtn = player.querySelector('.stop');
-
-const skipButtons = player.querySelectorAll('[data-skip]');
-
-const speakerIcon = player.querySelector('#speaker_icon');
-const ranges = player.querySelectorAll('.player_slider');
-/* MUTE button */
-const speaker = player.querySelector('.speaker');
-const volInput = player.querySelector('input[name="volume"]')
-//const speakerIcon = player.querySelector('#speaker_icon'); 
-
-// show play button when paused
-function showPlayIcon() {
-  playBtn.classList.replace('fa-pause', 'fa-play');
-  playBtn.setAttribute('title', 'Play');
-}
-
-// toggle between play and pause
-function togglePlay() {
-  if (video.paused) {
-    video.play();
-    playBtn.classList.replace('fa-play', 'fa-pause');
-    playBtn.setAttribute('title', 'Pause');
-  } else {
-    video.pause();
-    showPlayIcon();
-  }
-}
-
-// Stop video
-function stopVideo() {
-  video.currentTime = 0;
-  video.pause();
-}
-
-// not sure, is this for FF and REW?
-function skip() {
-  video.currentTime += +(this.dataset.skip);
-}
-
-// volume functions
-function handleRangeUpdate() {
-  video[this.name] = this.value;
-  (video['volume'] === 0 ? speakerIcon.className = "fa fa-volume-off" :
-    speakerIcon.className = "fa fa-volume-up")
-}
-
-let muted = false;
-
-function mute() {
-  if (!muted) {
-    video['volume'] = 0;
-    volInput.value = 0;
-    speakerIcon.className = "fa fa-volume-off"
-    muted = true;
-  } else {
-    video['volume'] = 1;
-    volInput.value = 1;
-    muted = false;
-    speakerIcon.className = "fa fa-volume-up"
-  }
-}
-
-// update progress bar as the video plays
-function updateProgress() {
-  progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
-  currentTime.textContent = `${displayTime(video.currentTime)} /`;
-  duration.textContent = `${displayTime(video.duration)}`;
-}
-// Calculate display time format
-function displayTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = Math.floor(time % 60);
-  seconds = seconds > 9 ? seconds : `0${seconds}`;
-  return `${minutes}:${seconds}`;
-}
-
-// Click to seek within the video
-function setProgress(e) {
-  const newTime = e.offsetX / progressRange.offsetWidth;
-  progressBar.style.width = `${newTime * 100}%`;
-  video.currentTime = newTime * video.duration;
-}
-
-function scrub(event) {
-  const scrubTime = (event.offsetX / progressRange.offsetWidth) * video.duration;
-  video.currentTime = scrubTime;
-}
-
-// Spacebar used to play and pause
-document.body.onkeyup = function (e) {
-  if (e.keyCode == 32) {
-    togglePlay();
-  }
-}
-
-// =======================
-video.addEventListener('timeupdate', updateProgress);
-video.addEventListener('canplay', updateProgress);
-progressRange.addEventListener('click', setProgress);
-// ===================
-/*functions linked to elements*/
-// play, pause, stop
-video.addEventListener('click', togglePlay);
-video.addEventListener('keydown', (event) => event.keyCode === 32 && togglePlay());
-playBtn.addEventListener('click', togglePlay);
-stopBtn.addEventListener('click', stopVideo);
-// skip forward or backward
-skipButtons.forEach(button => button.addEventListener('click', skip));
-// volume
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
-speaker.addEventListener('click', mute)
-
-// progress bar controls
-let mouseDown = false;
-progressRange.addEventListener('click', scrub);
-progressRange.addEventListener('mousemove', (event) => mouseDown && scrub(event));
-progressRange.addEventListener('mousedown', () => mouseDown = true);
-progressRange.addEventListener('mouseup', () => mouseDown = false);
-
-//fullscreen mode 
-const screen_size = player.querySelector('.screenSize');
-const controls = player.querySelector('.player_controls');
-const screenSize_icon = player.querySelector('#screenSize_icon');
-
-function changeScreenSize() {
-  if (player.mozRequestFullScreen) {
-
-    player.mozRequestFullScreen();
-    //change icon
-    screenSize_icon.className = "fa fa-compress";
-    /*control panel once fullscreen*/
-    video.addEventListener('mouseout', () => controls.style.transform = 'translateY(100%) translateX(-5px)');
-    video.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
-    controls.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
-    screen_size.addEventListener('click', () => {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-        screenSize_icon.className = "fa fa-expand";
-      }
-    });
-  } else if (player.webkitRequestFullScreen) {
-
-    player.webkitRequestFullScreen();
-
-    screenSize_icon.className = "fa fa-compress";
-
-    video.addEventListener('mouseout', () => controls.style.transform = 'translateY(100%) translateX(-5px)');
-    video.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
-    controls.addEventListener('mouseover', () => controls.style.transform = 'translateY(0)');
-    screen_size.addEventListener('click', () => {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-        screenSize_icon.className = "fa fa-expand";
-      }
-    });
-  }
-}
-screen_size.addEventListener('click', changeScreenSize);
-/* end full screen */
-
-
-/*play rate button - NOT INTERESTED IN THESE CONTROLS */
- const rate_icon = player.querySelector('.rate_icon')
- const rateInput = player.querySelector('input[name="playbackRate"]')
- let rateChanged = false;
-
- function changeRate() {
-   if (!rateChanged) {
-     video['playbackRate'] = 0.5;
-     rateInput.value = 0.5;
-     rateChanged = true;
-   } else {
-     video['playbackRate'] = 1;
-     rateInput.value = 1;
-     rateChanged = false;
-   }
- }
-
- rate_icon.addEventListener('click', changeRate)
-/**/
-
-
-</script>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/js/bootstrap-select.js"></script>
+<script type="text/javascript" src="{% static 'js/videos.js' %}"></script>
 </html>
 
 
