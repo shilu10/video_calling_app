@@ -66,14 +66,18 @@ mediaRecorder.onstop = async ( ) => {
        
   });
 
-  // getting presigned url from our backend server
-  const url = await axios.get('s3url/',{ headers: {'Content-Type': 'multipart/form-data'}})
+  // getting presigned url from our backend server, params is the name of the subject
+  // he or she writing
+  const url = await axios.get('s3url/',{params: { folder_name : 'computer_bscit', name : '18Bit048' }})
   
+  console.log(url)
   // posting the video to the s3 bucket, with the presigned url from the backend.
   // metadata will be stored in the s3 bucket metadata, it tells what kind of the data
   // is in the file.
   // if we change the metadata type, then the video cannot be displayed in the browser.
   await axios.put(url.data, blob, { headers: {'Content-Type': 'video/mp4'}})
+
+  
   
   //empty the array for reuse.
   recordedChunks = [];
