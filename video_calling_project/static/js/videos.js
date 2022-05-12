@@ -8,22 +8,34 @@ sessionStorage.setItem('exam', 'computer')
 const dept = sessionStorage.getItem('dept')
 const exam = sessionStorage.getItem('exam')
 
+console.log(dept)
+console.log(exam)
+
+bucket_name = exam + dept;
 
 
+console.log(sessionStorage.getItem('video_file'))
 
 
+// submit event.
+const video_puller = async() => {
+
+ 
+  sessionStorage.setItem('video_file', 'https://dq56bnzycx68u.cloudfront.net/computer_bscit/18Bit048.mp4')
+  
+}
+// this is for adding the videos automatically.
 const v = document.getElementById("vid");
 console.log(v)
-//v.src = 'https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164'
 
 var source = document.createElement('source');
-source.setAttribute('src', 'https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164');
+source.setAttribute('src', sessionStorage.getItem('video_file'));
 source.setAttribute('type', 'video/mp4');
 
 v.appendChild(source);
-console.log(v)
-//player1.firstChild(v);
 
+
+// here are implementing the functionality needed in the video player.
 const player = document.querySelector('.player');
 const video = player.querySelector('.viewer');
 

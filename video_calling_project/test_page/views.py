@@ -6,71 +6,20 @@ from .models import computer_bsc
 from .aws_connections import *
 import io, os
 import glob
+from django.views.decorators.csrf import csrf_exempt
 
 
 # creating a s3 client connection using boto3.
 S3_CLIENT = create_s3_client()
 
-# pretend it is english exam
-current_exam = 'english'
-
 
 # This will send the json response to the frontend
-
 def post_url(request) :
+    folder_name = request.GET.get('folder_name')
+    filename = request.GET.get('name')
 
-    # bucketname for storing the video filenames
-
-    bucket_name = 'b.n'
-
-    # this is the video filename
-    name = "shilash.bscit1" 
-
-
-    # instead of using the database, we could just use the csv file to store the filename
-    # and upload it to the s3.
-
-    # first checking whether there is already a file exist in the s3.
-
-    # example filename ---> subject + dept
-
-    videos_filenames_file = "computer_bscit.csv"
-
-    # checking is there is filename(key_ present in this name in s3 bucket.
-
-    #Creating Session With Boto3. to put new file or new content.
-   
-    # this is for the safety purpose, we are uploading the students file to the 
-    # s3 bucket
-#    try :
-        
-
-        #S3_CLIENT.head_object(Bucket = bucket_name, Key = videos_filenames_file)
-
- #   except :
-    v_filepath = os.path.join('files', videos_filenames_file)
-    if not os.path.isfile(v_filepath) : 
-        print("yea")
-        with open(f'files/{videos_filenames_file}', 'wb') as f :
-            writer = csv.writer(f)
-            writer.writerow(name)
-        
-    else :
-        print(":E")
-        name_ = list(name.split(" "))
-        with open(f'files/{videos_filenames_file}', 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow(name_)
-        
- #   finally :
-  #      file_ = f'files/{videos_filenames_file}.csv'
-   #     S3_CLIENT.upload_file(file_, bucket_name, videos_filenames_file)
-
-    # Saving the filename into the table, so we can use it later.
-   # record = computer_bsc(filename = name)
-    #record.save()
-    #console.log(name, "name")
-    url = generate_url(name)
+    # this will generate a url from the bucket he/she writing the exam.  
+    url = generate_url(folder_name, filename)
     return JsonResponse(url, safe = False)
 
 
@@ -78,41 +27,10 @@ def post_url(request) :
 def test_page(request) :
     return render(request, 'test_page/test_page.html')
 
-
+@csrf_exempt
 def videos_page(request) :
     return render(request, 'test_page/view_videos.html')
 
-
-def get_filenames(request) :
-    filename = request.GET.get('name')
-    filepath = os.path.join('files', filename)
-
-   # /django_projects/video_calling_project/files
-    try:    
-        with open(filepath, 'r') as f:
-            csv_reader = csv.reader(f)
-            
-            filenames_ = [ ]
-            for content_list in csv_reader :
-                print(csv_reader, str(content_list))
-                content = ''.join(content_list) + ','
-               # print(c)
-                filenames_.append(content)
-                       
-        file_data = filenames_
-
-        # sending response 
-        response = HttpResponse(file_data, content_type='application/vnd.ms-excel')
-        response['Content-Disposition'] = f'attachment; filename="{filename}"'
-
-    except IOError:
-        # handle file not exist case here
-        response = HttpResponseNotFound('<h1>File not exist</h1>')
-
-    return response
-    
-
-    
 
 
 

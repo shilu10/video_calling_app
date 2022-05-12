@@ -5,15 +5,13 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet">
-   
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet"> 
   <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
-   <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
-   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/css/bootstrap-select.css" />
-
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+  <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/css/bootstrap-select.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
  
 </head>
@@ -27,15 +25,15 @@
         <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
         ClassLine
       </a>
-      <form class="form-inline">
+      <form class="form-inline" method="post" action="">
         <input class="form-control mr-2" type="search" placeholder="Eg.18Bit048" aria-label="Search">
-        <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+        <button onclick="video_puller()" class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </nav>
 
 
     <!--Alert-->
-  <div class="alert alert-info alert-dismissible fade show" role="alert">
+  <div class="alert alert-info alert-dismissible fade show" role="alert" id="alert_mechanism">
   <strong>Yeah!</strong> Use the Search Bar for Videos....
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
