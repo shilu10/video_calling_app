@@ -143,3 +143,15 @@ def get_filenames(request) :
 
 # we need to stream the video dynamic content. so it html pages, should not contain
 # anything. we should dynamically create the things.
+
+
+
+
+
+# tomorrow ------> ttry to connect the idea with data ingestion and try to get the 
+# csv file from the clients and try to create a bucket and everything according to
+# it.
+# because we neednot have to handle the file at the backend.
+# try to implement the code, to create the bucket automatically from the 
+# users input and use, it, in the cloudfront we can specify the folders and filename
+# to get the video, so we can just use it, for the easier purpose.
