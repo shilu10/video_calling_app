@@ -18,26 +18,39 @@
  
 </head>
 
+
+
   <!--Navbar-->
   <body>
     <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
       <a class="navbar-brand" href="#">
         <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
-        BootstrapBay
+        ClassLine
       </a>
       <form class="form-inline">
-        <input class="form-control mr-2" type="search" placeholder="Search for video by Rollno" aria-label="Search">
+        <input class="form-control mr-2" type="search" placeholder="Eg.18Bit048" aria-label="Search">
         <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </nav>
+
+
+    <!--Alert-->
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Yeah!</strong> Use the Search Bar for Videos....
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
     
+
+
 
 <!--For the Video-->
   <div style = "position:relative; top:20px" class="video-box">
     <div class="player" id="player">
-      <video class="player_video viewer"></video>
-      <!-- <video class="player_video viewer" src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" poster="https://pixabay.com/images/id-4583946/"></video> -->
-      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-41758_source.mp4?attachment"></video> -->
+      
+     
+      <video class="player_video viewer" id="vid"></video>
       <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-28745_source.mp4?attachment"></video> -->
       <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment"></video> -->
 

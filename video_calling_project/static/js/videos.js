@@ -1,3 +1,29 @@
+//const player1 =  document.getElementById('player')
+
+//console.log(player1)
+
+sessionStorage.setItem('dept', 'bscit')
+sessionStorage.setItem('exam', 'computer')
+
+const dept = sessionStorage.getItem('dept')
+const exam = sessionStorage.getItem('exam')
+
+
+
+
+
+const v = document.getElementById("vid");
+console.log(v)
+//v.src = 'https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164'
+
+var source = document.createElement('source');
+source.setAttribute('src', 'https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164');
+source.setAttribute('type', 'video/mp4');
+
+v.appendChild(source);
+console.log(v)
+//player1.firstChild(v);
+
 const player = document.querySelector('.player');
 const video = player.querySelector('.viewer');
 
@@ -194,5 +220,3 @@ screen_size.addEventListener('click', changeScreenSize);
  rate_icon.addEventListener('click', changeRate)
 
 
-const video11 =  document.getElementsByClassName("player_video viewer")
-video11.src = 'https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164'
