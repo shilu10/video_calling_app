@@ -1,292 +1,233 @@
-*,
-*:before,
-*:after {
-  /* box-sizing: inherit; */
-  box-sizing: border-box;
+:root {
+  --plyr-color-main: #009227;
 }
 
+html,
 body {
-  margin: 0;
-  padding: 0;
-  background-color: rgb(85, 83, 83);
-  font-size: 1rem;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "Roboto", sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.65;
+  color: white;
+  background-color: #111212;
+  background-image: url("https://i.postimg.cc/fbSXnBct/video.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: soft-light;
 }
 
-button + button {
-  margin-left: 0.75em;
+small,
+.text-small {
+  font-size: 0.8em;
 }
 
-.upload {
-  text-align: center;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.plyr--video {
+  width: 100%;
+  border-radius: 0.64em;
+  box-shadow: 0.0625rem 0.125rem 0.25rem 0.0625rem rgba(0, 0, 0, 0.2);
 }
 
-.video-box {
-  margin-top: 3em;
+.plyr__poster {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: top center;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0 4rem 0;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+}
+main section {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.player {
-  width: 60%;
-  
-  position: relative;
-  font-size: 0;
-  overflow: hidden;
+main section .lx-container-80 .lx-row {
+  align-items: flex-start;
 }
-.player_video {
+main section .lx-container-80 .lx-row #videoColumn .lx-row .video-header {
   width: 100%;
-  cursor: pointer;
+  margin: 0 0 1.05rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.fa {
-  color: white;
-  font-size: 1rem;
+main section .lx-container-80 .lx-row #videoColumn .lx-row .video-header h1 {
+  margin: 0;
+  line-height: normal;
+  font-size: 1.953em;
 }
-
-.fa-play:hover,
-.fa-pause:hover,
-.fa-stop:hover,
-.fa-volume-up:hover,
-.fa-fast-backward:hover,
-.fa-fast-forward:hover {
-  color: dodgerblue;
-  cursor: pointer;
+main section .lx-container-80 .lx-row #videoColumn .lx-row .video-header .nav-toggle {
+  padding: 0.5rem;
+  border-radius: 0.64em;
+  box-shadow: 0.0625rem 0.125rem 0.25rem 0.0625rem rgba(0, 0, 0, 0.2);
+  background-color: #1e2020;
 }
-
-.player_button {
-  background: none;
-  border: 0;
-  line-height: 1;
-  color: white;
-  text-align: center;
-  outline: 0;
+main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card {
+  width: 100%;
+  margin: 1rem 0 0 0;
   padding: 0;
-  cursor: pointer;
-  max-width: 50px;
-  font-size: 1rem;
-}
-.player_button:focus,
-.player_button:hover {
-  border-color: #ffc600;
-  border-color: blue;
-}
-.player_slider {
-  width: 0.75rem;
-  height: 3rem;
-}
-.player_controls {
   display: flex;
-  position: absolute;
-  bottom: 0;
+  flex-flow: wrap column;
+  overflow: hidden;
+  border: none;
+  background-color: #1e2020;
+}
+main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card .accordion {
   width: 100%;
-  transform: translateY(100%) translateX(-5px); 
-  transition: all 0.3s;
-  flex-wrap: wrap; 
-  background: rgba(0, 0, 0, 0.1);
-  padding: 0 1.5rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+  font-size: 1.563em;
+  background-color: #2b2e2e;
+  transition: 0.3s;
 }
-.player:hover .player_controls {
-  transform: translateY(0);
+main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card .accordion:after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  border-right: 0.125rem solid #009227;
+  border-bottom: 0.125rem solid #009227;
+  transition: 0.4s;
 }
-
-.player:hover .progress-range {
-  height: 0.75rem;
+main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card .accordion.is-active:after {
+  transform: translate(-50%, -50%) rotate(45deg);
 }
-
-.right-controls {
+main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card .panel {
+  max-height: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  font-size: 0.75em;
+  transition: max-height 0.5s;
+}
+main section .lx-container-80 .lx-row #videoColumn.is-full {
+  width: 100%;
+}
+main section .lx-container-80 .lx-row #navColumn {
+  display: none;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card {
+  width: 100%;
+  margin: 0 0 1em 0;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background-color: #1e2020;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .title {
+  padding: 0.8em 1em;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .title h2 {
+  width: 100%;
+  margin: 0 0 0.5rem 0;
+  line-height: normal;
+  text-align: left;
+  font-size: 1.563em;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .title p {
+  margin: 0;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions {
   display: flex;
-  justify-content: flex-end;
+  flex-flow: wrap column;
 }
-.left-controls {
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .accordion {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  position: relative;
+  border-radius: 0;
+  border: none;
+  text-align: left;
+  font-size: 0.8em;
+  background-color: #2b2e2e;
+  transition: 0.3s;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .accordion:after {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  border-right: 0.125rem solid #009227;
+  border-bottom: 0.125rem solid #009227;
+  transition: 0.4s;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .accordion.is-active:after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel {
+  max-height: 0;
+  padding: 0 1rem;
+  overflow: hidden;
+  font-size: 0.75em;
+  transition: max-height 0.5s;
+}
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel .go-to {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 }
-
-.player_controls > * {
-  flex: 1;
-}
-.progress-range {
-  flex: 10;
-  position: relative;
-  display: flex;
-  flex-basis: 100%;
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel .go-to img,
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel .go-to svg,
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel .go-to i {
   height: 1.5em;
-  transition: height 0.3s;
-  background: rgba(0, 0, 0, 0.25);
-  cursor: pointer;
+  margin: 0 0.5rem 0 0;
+  color: #009227;
+  object-fit: contain;
 }
-.progress-bar {
-  background: dodgerblue;
-  width: 50%;
-  height: 100%;
-  border-radius: 1.5em;
-  transition: all 250ms ease;
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card .accordions .panel .go-to p {
+  flex-grow: 1;
 }
-
-.player:fullscreen {
-  max-width: none;
-  width: 100%;
-}
-.player:-webkit-full-screen {
-  /*CHROME*/
-  max-width: none;
-  width: 100%;
-}
-.player:-moz-full-screen {
-  /*FIREFOX*/
-  max-width: none;
-  width: 100%;
-}
-
-.time {
-  text-align: right;
-  position: relative;
-  top: 0.85em;
-  padding-left: 0.5em;
-  margin-right: 1em;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  /* user-select: none; */
-}
-
-.time-elapsed,
-.fa-fast-forward {
-  padding-left: 0.75em;
-}
-
-/**/
-/*css to style input type="range"*/
-input[type='range'] {
-  -webkit-appearance: none;
-  background: transparent;
-  width: 40%;
-  margin: 0 20px;
-}
-input[type='range']:focus {
-  outline: none;
-}
-input[type='range']::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
-  border: 0.2px solid rgba(1, 1, 1, 0);
-}
-input[type='range']::-webkit-slider-thumb {
-  height: 0.75em;
-  width: 1em;
-  border-radius: 0.25em;
-  background: dodgerblue;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -4px;
-  box-shadow: 0 0 2px rgb(15, 14, 80);
-}
-
-input[type='range']::-moz-range-track {
-  /*?*/
-  width: 100%;
-  height: 8.4px;
-  cursor: pointer;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-  background: #ffffff;
-  border-radius: 1.3px;
-  border: 0.2px solid rgba(1, 1, 1, 0);
-}
-input[type='range']::-moz-range-thumb {
-  /*?*/
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
-  height: 12px;
-  width: 17px;
-  border-radius: 50px;
-  /* background: #ffc600; */
-  background: blue;
-  cursor: pointer;
-}
-
-@media (max-width: 827px) {
-  .fa {
-    color: white;
-    font-size: 0.9rem;
-  }
-  button + button {
-    margin-left: 0;
-  }
-  .time {
-    padding-left: 0;
-    margin-right: 0.5em;
-  }
-
-  .time-elapsed,
-  .fa-fast-forward {
-    padding-left: 0.75em;
-  }
-  .player {
-    width: 80%;
-  }
-}
-@media (max-width: 600px) {
-  .player {
-    width: 95%;
-  }
-}
-
-
-/* for navbar*/
-
-/* This first section is a simple "reset". It allows the navbar to push up against the top of the browser window with no white space around it. This code also sets the default font for your whole page. Put it at the very top of your css page.  */
-html, body, div, p, ul, li {
+main section .lx-container-80 .lx-row #navColumn .lx-row .lx-card:last-child {
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+}
+main section .lx-container-80 .lx-row #navColumn.is-active {
+  display: block;
 }
 
-/* This class is applied to the containing div <div class="nav"> and is used to set the background color and height of the navbar */
-.nav {
-  background: #000;
-  height: 60px; /* set same as height & line-height below */
+@media screen and (max-width: 64rem) {
+  main section .lx-container-80 .lx-row .lx-column {
+    padding: 0;
+  }
+  main section .lx-container-80 .lx-row #videoColumn {
+    width: 100%;
+  }
+  main section .lx-container-80 .lx-row #videoColumn .lx-row .video-header .nav-toggle {
+    display: none;
+  }
+  main section .lx-container-80 .lx-row #videoColumn .lx-row .lx-card {
+    margin: 1rem 0;
+  }
+  main section .lx-container-80 .lx-row #navColumn {
+    width: 100%;
+  }
 }
-
-/* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
-.nav li {
-  display: inline-block;
-  list-style: none;
-  height: 60px; /* should be the same as line-height */
-  line-height: 60px; /* should be the same as height */
-  padding: 0 40px; /* "0" sets top and bottom padding to none */
+@media screen and (max-width: 31.25rem) {
+  html,
+body {
+    font-size: 95%;
+  }
 }
-
-/* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
-.nav li:hover {
-  background: red;
-  transition: background .3s;
-}
-
-/* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-}
-
-
-/* for dropdown */
-
-
-.bg-custom-1 {
-  background-color: #85144b;
-}
-
-.bg-custom-2 {
-background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+@media screen and (max-width: 22.5rem) {
+  html,
+body {
+    font-size: 90%;
+  }
 }
