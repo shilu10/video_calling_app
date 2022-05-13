@@ -2,18 +2,20 @@
 {% load static %}
 
 <head>
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap" rel="stylesheet"> 
   <link href="https://vjs.zencdn.net/4.0.4/video-js.css" rel="stylesheet"> 
-  <script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/css/bootstrap-select.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
-   <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/videos.css' %}">
- 
+  
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.0/dist/compressed/luxa.css'><link rel="stylesheet" href="{% static 'styles/videos.css' %}">
+
+  
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.9/plyr.css">
 </head>
 
 
@@ -41,58 +43,147 @@
 </div>
     
 
+<main>
 
 
-<!--For the Video-->
-  <div style = "position:relative; top:20px" class="video-box">
-    <div class="player" id="player">
-      
-     
-      <video class="player_video viewer" id="vid"></video>
-      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-28745_source.mp4?attachment"></video> -->
-      <!-- <video class="player_video viewer" src="https://pixabay.com/videos/download/video-31377_tiny.mp4?attachment"></video> -->
-
-      <div class="player_controls">
-        <div class="progress-range" title="Jump-to">
-          <div class="progress-bar"></div>
-        </div>
-        <div class="left-controls">
-          <button class="player_button toggle" title='Toggle Play'><i class="fa fa-play" title="Play" id="play-btn"></i></button>
-          <button class="player_button stop" title='Start over'><i class="fa fa-stop" title="Play" id="stop-btn"></i></button>
-          <button class="player_button speaker"><i id="speaker_icon" class="fa fa-volume-up" aria-hidden="true"></i></button>
-          <input type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="1"></input>
-        </div>
-        <div class="right-controls">
-
-          <!-- I don't see the need for spped changes but I'm leaving the code in for now -->
-           <button class="player_button rate_icon"><i class="fa fa-spinner" aria-hidden="true"></i></button>
-          <input type="range" name="playbackRate" class="player_slider" min="0.5" max="2" step="0.1" value="1"></input> 
-          
-          
-          
-          <button data-skip="-10" class="player_button"><i class="fa fa-fast-backward" aria-hidden="true"></i></button>
-          <button data-skip="10" class="player_button"><i class="fa fa-fast-forward" aria-hidden="true"></i></button>
-          <div class="time">
-            <span class="time-elapsed">00:00 / </span>
-            <span class="time-duration">2:38</span>
+<section>
+  <div class="lx-container-80">
+    <div class="lx-row">
+      <div id="videoColumn" class="lx-column is-8 is-flex">
+        <div class="lx-row">
+          <div class="video-header">
+            <h1>Spring</h1>
+            <a class="nav-toggle text-small is-active">Hide navigation</a>
           </div>
-          <button class="player_button screenSize"><i id="screenSize_icon" class="fa fa-expand" aria-hidden="true"></i></button>
+          <!-- example of how to use with the HTML5 <video> tag -->
+          <video id="player" playsinline controls>
+            
+            <track kind="captions" label="English" src="path/video-en.vtt" srclang="en" default />
+          </video>
+          <div class="lx-card">
+            <a class="accordion">Description</a>
+            <div class="panel">
+              <p>Spring is the latest short film produced by Blender Animation Studio. Made in
+                Blender 2.8. Get the production files, assets and exclusive making-of videos by
+                joining Blender Cloud at <a href="https://cloud.blender.org" target="_blank" rel="noopener noreferrer">https://cloud.blender.org</a>
+              </p>
+              <p>Spring is the story of a shepherd girl and her dog, who face ancient spirits in
+                order to continue the cycle of life. This poetic and visually stunning short
+                film was written and directed by Andy Goralczyk, inspired by his childhood in
+                the mountains of Germany.
+              </p>
+              <p>The Spring team used the development version of Blender 2.80 for the entire
+                production, before the software was in official Beta even. As for all of
+                Blender’s Open Movies, the entire production process and all its source files
+                are being shared on the production platform Blender Cloud.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="navColumn" class="lx-column is-active">
+        <div class="lx-row">
+          <div class="lx-card">
+
+            <div class="accordions">
+              <a class="accordion">Start of the journey</a>
+              <div class="panel">
+                <a class="go-to" data-time="15">
+                  <i class="fas fa-external-link-alt"></i>
+                  <p>Go to this part</p>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+              <a class="accordion">The call to adventure</a>
+              <div class="panel">
+                <a class="go-to" data-time="65">
+                  <i class="fas fa-external-link-alt"></i>
+                  <p>Go to this part</p>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+              <a class="accordion">Meeting the mentor</a>
+              <div class="panel">
+                <a class="go-to" data-time="115">
+                  <i class="fas fa-external-link-alt"></i>
+                  <p>Go to this part</p>
+                </a>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="lx-card">
+            <div class="title">
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="accordions">
+              <a class="accordion">Lorem ipsum dolor sit amet?</a>
+              <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              </div>
+              <a class="accordion">Lorem ipsum dolor sit amet?</a>
+              <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+              <a class="accordion">Lorem ipsum dolor sit amet?</a>
+              <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+</main>
+<!-- partial -->
 
-  <!-- <script src="/Users/CMurphy/Desktop/JavaScript30-Challenge/Custom HTML5 Video Player/Custom HTML5 Video Player.js"></script> -->
+
 
 
 </body>
 
+
+<script src="https://vjs.zencdn.net/4.0.4/video.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src='https://cdn.plyr.io/3.6.2/plyr.js'></script>
+<script src='https://use.fontawesome.com/releases/v5.14.0/js/all.js'></script><script  src="{% static 'js/videos.js' %}"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.3/js/bootstrap-select.js"></script>
 <script type="text/javascript" src="{% static 'js/videos.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.6.7/plyr.min.js"></script>
+
+
 </html>
 
 
