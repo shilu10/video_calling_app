@@ -44,6 +44,7 @@ main {
   display: flex;
 }
 main section {
+  margin-bottom: 250px;
   width: 100%;
   min-height: 100vh;
   display: flex;
