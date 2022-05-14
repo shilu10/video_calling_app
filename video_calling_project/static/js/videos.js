@@ -59,15 +59,32 @@ document.addEventListener("DOMContentLoaded", () => {
 		
   }
 
+const new_func = async () => {
+	console.log(sessionStorage.getItem('video_file'))
+	var response = await axios.get(sessionStorage.getItem('video_file'))
+	const alert = document.getElementById('alert')
+	if (response.status != 200){
+		alert.style.opacity =  "1.0";
+	}
+	else{
+		alert.style.opacity = "0";
+	}
 
-  // this is for adding the videos automatically.
-  const v = document.getElementById("player");
+}
 
-  var source = document.createElement('source');
-  source.setAttribute('src', sessionStorage.getItem('video_file'));
-  source.setAttribute('type', 'video/mp4');
+new_func()
+
+// this is for adding the videos automatically.
+const v = document.getElementById("player");
+
+var source = document.createElement('source');
+source.setAttribute('src', sessionStorage.getItem('video_file'));
+source.setAttribute('type', 'video/mp4');
   
-  v.appendChild(source);
-  
+v.appendChild(source);
+
+v.n
+
+
 
   
