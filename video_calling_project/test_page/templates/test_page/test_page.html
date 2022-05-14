@@ -68,7 +68,7 @@ mediaRecorder.onstop = async ( ) => {
 
   // getting presigned url from our backend server, params is the name of the subject
   // he or she writing
-  const url = await axios.get('s3url/',{params: { folder_name : 'computer_bscit', name : '18Bit048' }})
+  const url = await axios.get('s3url/',{params: { folder_name : 'computer_bscit', name : '18Bit047' }})
   
   console.log(url)
   // posting the video to the s3 bucket, with the presigned url from the backend.

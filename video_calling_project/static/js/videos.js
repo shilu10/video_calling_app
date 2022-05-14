@@ -48,37 +48,26 @@ document.addEventListener("DOMContentLoaded", () => {
   
   
   
-  sessionStorage.setItem('dept', 'bscit')
-  sessionStorage.setItem('exam', 'computer')
   
-  const dept = sessionStorage.getItem('dept')
-  const exam = sessionStorage.getItem('exam')
-  
-  console.log(dept)
-  console.log(exam)
-  
-  bucket_name = exam + dept;
-  
-  
-  console.log(sessionStorage.getItem('video_file'))
-  sessionStorage.setItem('video_file', 'https://dq56bnzycx68u.cloudfront.net/computer_bscit/18Bit048.mp4')
-  
+
   // submit event.
   const video_puller = async() => {
-  
-   
-	
-	
+
+		const input_val = document.getElementById('input').value
+		sessionStorage.setItem('video_file', `https://dq56bnzycx68u.cloudfront.net/computer_bscit/${input_val}.mp4`)
+
+		
   }
+
+
   // this is for adding the videos automatically.
   const v = document.getElementById("player");
-  console.log(v)
-  
+
   var source = document.createElement('source');
   source.setAttribute('src', sessionStorage.getItem('video_file'));
   source.setAttribute('type', 'video/mp4');
   
   v.appendChild(source);
   
-  console.log(v)
+
   
