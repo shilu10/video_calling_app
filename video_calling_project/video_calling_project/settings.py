@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
     'login',
 
-    'test_page'
+    'test_page',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,8 @@ ROOT_URLCONF = 'video_calling_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'base/templates'), os.path.join(BASE_DIR, 'login/templates'), os.path.join(BASE_DIR, 'test_page/templates')] ,
+        'DIRS': [os.path.join(BASE_DIR,'base/templates'), os.path.join(BASE_DIR, 'login/templates'), os.path.join(BASE_DIR, 'test_page/templates'), 
+        os.path.join(BASE_DIR,'home/templates')] ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
