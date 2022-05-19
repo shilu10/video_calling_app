@@ -8084,3 +8084,44 @@ body {
     .switcher-wrap {
       display: none; } }
   
+
+
+/*filter css*/
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border: 1px solid #333 !important;
+} 
+.select2 .select2-container .select2-container--default .select2-container--focus {
+	border: 1px solid #333 !important;
+}
+.select2-container--default .select2-selection--multiple {
+	border: 1px solid #333 !important;
+}
+.select2-search__field {
+	background-color: white !important;
+}
+.select2-dropdown .select2-dropdown--below {
+	border: 1px solid #333 !important;
+}
+.select2-results {
+	background-color: #444;
+	height: 100px;
+	color: #222;
+}
+.select2-results__options {
+	height: 100px;
+}
+body {
+	background-color: #222;
+	padding: 20px;
+}
+small {
+	color: white;
+}
+.contains {
+	background-color: #333;
+	width: 500px;
+	display: inline-block;
+	padding: 20px;
+	border-radius: 5px;
+}
