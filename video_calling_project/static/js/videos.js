@@ -46,20 +46,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
   });
   
-  
-  
-  
+// Shilash Code.
 
-  // submit event.
-  const video_puller = async() => {
-
-		const input_val = document.getElementById('input').value
-		sessionStorage.setItem('video_file', `https://dq56bnzycx68u.cloudfront.net/computer_bscit/${input_val}.mp4`)
-
-		
+// submit event.
+var video_puller = async() => {
+	const input_val = document.getElementById('input').value
+	sessionStorage.setItem('video_file', `https://dq56bnzycx68u.cloudfront.net/computer_bscit/${input_val}.mp4`)
   }
 
-const new_func = async () => {
+
+// for the alerts 
+var alert_functionality = async () => {
 	console.log(sessionStorage.getItem('video_file'))
 	var response = await axios.get(sessionStorage.getItem('video_file'))
 	const alert = document.getElementById('alert')
@@ -71,93 +68,42 @@ const new_func = async () => {
 	}
 
 }
+alert_functionality()
 
-new_func()
 
 // this is for adding the videos automatically.
-const v = document.getElementById("player");
-
+var video_player = document.getElementById("player");
 var source = document.createElement('source');
 source.setAttribute('src', sessionStorage.getItem('video_file'));
 source.setAttribute('type', 'video/mp4');
-  
-v.appendChild(source);
+video_player.appendChild(source);
+
+// just for imitating the client data.
+var dept = ["bscit", "bscct"]
+var exam = ["computer", "math"]
+// Adding the values to the option tag from the js.
+var dropdown = document.getElementsByClassName("selectpicker")
+
+dept.forEach((value) => {
+	var option = document.createElement('option');
+	var option_value = document.createTextNode(value);
+	option.appendChild(option_value);
+	dropdown[0].appendChild(option);
+})
+
+exam.forEach((value)=>{
+	var option = document.createElement('option');
+	var option_value = document.createTextNode(value);
+	option.appendChild(option_value);
+	dropdown[0].appendChild(option);
+
+})
 
 
+function dropdown_values(){
+	var select = document.getElementsByClassName("selectpicker")
+	val = select.options[select.selectedIndex]
+	console.log(val)
+} 
 
 
-  
-
-$(function () {
-
-    // init feather icons
-    feather.replace();
-
-    // init tooltip & popovers
-    $('[data-toggle="tooltip"]').tooltip();
-    $('[data-toggle="popover"]').popover();
-
-    //page scroll
-    $('a.page-scroll').bind('click', function (event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 20
-        }, 1000);
-        event.preventDefault();
-    });
-
-    // slick slider
-    $('.slick-about').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        dots: true,
-        arrows: false
-    });
-
-    //toggle scroll menu
-    var scrollTop = 0;
-    $(window).scroll(function () {
-        var scroll = $(window).scrollTop();
-        //adjust menu background
-        if (scroll > 80) {
-            if (scroll > scrollTop) {
-                $('.smart-scroll').addClass('scrolling').removeClass('up');
-            } else {
-                $('.smart-scroll').addClass('up');
-            }
-        } else {
-            // remove if scroll = scrollTop
-            $('.smart-scroll').removeClass('scrolling').removeClass('up');
-        }
-
-        scrollTop = scroll;
-
-        // adjust scroll to top
-        if (scroll >= 600) {
-            $('.scroll-top').addClass('active');
-        } else {
-            $('.scroll-top').removeClass('active');
-        }
-        return false;
-    });
-
-    // scroll top top
-    $('.scroll-top').click(function () {
-        $('html, body').stop().animate({
-            scrollTop: 0
-        }, 1000);
-    });
-
-    /**Theme switcher - DEMO PURPOSE ONLY */
-    $('.switcher-trigger').click(function () {
-        $('.switcher-wrap').toggleClass('active');
-    });
-    $('.color-switcher ul li').click(function () {
-        var color = $(this).attr('data-color');
-        $('#theme-color').attr("href", "css/" + color + ".css");
-        $('.color-switcher ul li').removeClass('active');
-        $(this).addClass('active');
-    });
-});
