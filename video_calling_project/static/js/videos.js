@@ -50,8 +50,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // submit event.
 var video_puller = async() => {
+
 	const input_val = document.getElementById('input').value
-	sessionStorage.setItem('video_file', `https://dq56bnzycx68u.cloudfront.net/computer_bscit/${input_val}.mp4`)
+
+	const dept = dropdown_values_for_first()
+	const exam = dropdown_values_for_second()
+
+	sessionStorage.setItem('video_file', `https://dq56bnzycx68u.cloudfront.net/${exam}_${dept}/${input_val}.mp4`)
   }
 
 
@@ -83,6 +88,9 @@ var dept = ["bscit", "bscct"]
 var exam = ["computer", "math"]
 // Adding the values to the option tag from the js.
 var dropdown = document.getElementsByClassName("selectpicker")
+var dropdown1 = document.getElementById("picker1")
+
+
 
 dept.forEach((value) => {
 	var option = document.createElement('option');
@@ -95,15 +103,23 @@ exam.forEach((value)=>{
 	var option = document.createElement('option');
 	var option_value = document.createTextNode(value);
 	option.appendChild(option_value);
-	dropdown[0].appendChild(option);
+	dropdown1.appendChild(option);
 
 })
 
 
-function dropdown_values(){
+function dropdown_values_for_first(){
 	var select = document.getElementsByClassName("selectpicker")
-	val = select.options[select.selectedIndex]
-	console.log(val)
+	console.log(select)
+	val = select[0].options['selectedIndex']
+	return dept[val]
 } 
 
+
+function dropdown_values_for_second(){
+	var select = document.getElementById("picker1")
+	console.log(select)
+	val = select.options['selectedIndex']
+	return exam[val]
+} 
 
