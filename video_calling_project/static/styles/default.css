@@ -1,3 +1,15 @@
+nav a+a{
+
+  padding : 0 40px 0 40px;
+  
+
+}
+a{
+  font-size: 22px
+}
+
+
+
 :root {
   --plyr-color-main: #009227;
 }

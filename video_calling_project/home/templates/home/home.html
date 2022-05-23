@@ -26,6 +26,17 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.0/dist/compressed/luxa.css'><link rel="stylesheet" href="{% static 'styles/default.css' %}" id="theme-color">
 </head>
 <body>
+    <style>
+        nav a+a{
+
+        padding : 0 40px 0 40px;
+        
+
+}
+    a{
+        font-size: 22px
+    }
+    </style>
 
 <!--navigation-->
 
@@ -34,8 +45,14 @@
           <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
           ClassLine
         </a>
-        <form class="form-inline" method="post" action="">
-            <input id = "input" class="form-control mr-2" type="search" placeholder="Eg.18Bit048" aria-label="Search">
+      
+            <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#"><strong>About</strong></a>
+            <a class="nav-item nav-link" href="#"><strong>Contact</strong></a>
+            <a class="nav-item nav-link disabled" href="#"><strong>Donate</strong></a>
+          <a></a>
+        <form class="form-inline" >
+            <input id = "input" class="form-control mr-2" type="search" placeholder="View Videos" aria-label="Search">
             <button onclick="video_puller()" class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
           </form>
        
@@ -48,9 +65,8 @@
     <div class="container">
         <div class="row vh-md-100">
             <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
-                <h1 class="heading-black text-capitalize">Quickly build landing pages with Knight</h1>
-                <p class="lead py-3">Knight is a platform that helps freelancers and companies build beautiful landing
-                    pages in minutes. Sign up for free.</p>
+                <h1 class="heading-black text-capitalize">Meet the Future!!!</h1>
+                <p class="lead py-3">Meet the world's frist AI Powered automated test and many functionalities based website.</p>
                 <button class="btn btn-primary d-inline-flex flex-row align-items-center">
                     Get started now
                     <em class="ml-2" data-feather="arrow-right"></em>
@@ -63,8 +79,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto text-center">
-                <h2 class="text-white heading-black">Choose your pricing plan.</h2>
-                <p class="text-light lead">Simply pricing - 7 Days free trial</p>
+                <h2 class="text-white heading-black">ClassLine offer's</h2>
+                
             </div>
         </div>
         <!--pricing tables-->
@@ -73,50 +89,48 @@
                 <div class="card-deck pricing-table">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title pt-3">Personal</h3>
-                            <h2 class="card-title text-primary mb-0 pt-4">$59</h2>
-                            <div class="text-muted font-weight-medium mt-2">per month</div>
+                            
+                            <h2 class="card-title text-primary mb-0 pt-4">Attend Virtual Test Event</h2>
+                            <div class="text-muted font-weight-medium mt-2">Student's</div>
                             <ul class="list-unstyled pricing-list">
-                                <input type="text">
-                                <li>1 user</li>
-                                <li>10 websites</li>
-                                <li>Access to premium templates</li>
-                                <li>Basic support</li>
+                               
+                                <li>Through this students can attend</li>
+                                <li>the exams </li>
+                                
                             </ul>
-                            <a href="#" class="btn btn-primary">
-                                Start free trial
+                            <a href="test/" class="btn btn-primary">
+                                Attend
                             </a>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title pt-3">Agency</h3>
-                            <h2 class="card-title text-info mb-0 pt-4">$159</h2>
-                            <div class="text-muted font-weight-medium mt-2">per month</div>
+                            
+                            <h2 class="card-title text-info mb-0 pt-4">Watch result videos</h2>
+                            <div class="text-muted font-weight-medium mt-2">Staff's</div>
                             <ul class="list-unstyled pricing-list">
-                                <li>2-15 users</li>
-                                <li>50 websites</li>
-                                <li>Access to premium templates</li>
-                                <li>Priority support</li>
+                                <li>Gives you the access to all the videos</li>
+                                <li>of the students who </li>
+                                <li>attended the test..</li>
                             </ul>
-                            <a href="#" class="btn btn-info">
-                                Start free trial
+                            <a href="/test/videos" class="btn btn-info">
+                                Watch
                             </a>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title pt-3">Enterprise</h3>
-                            <h2 class="card-title text-primary mb-0 pt-4">$499</h2>
-                            <div class="text-muted font-weight-medium mt-2">per month</div>
+                            
+                            <h2 class="card-title text-primary mb-0 pt-4">Conducting a virtual class</h2>
+                            <div class="text-muted font-weight-medium mt-2">Staff's</div>
                             <ul class="list-unstyled pricing-list">
-                                <li>Unlimited users</li>
-                                <li>Unlimited websites</li>
-                                <li>Access to premium templates</li>
-                                <li>24/7 support</li>
+                                <li>This allow's staff's to conduct</li>
+                                <li>a virtual class via video call</li>
+                                <li> with many functionalities..</li>
+                                
                             </ul>
-                            <a href="#" class="btn btn-primary">
-                                Start free trial
+                            <a href="class" class="btn btn-primary">
+                                Conduct
                             </a>
                         </div>
                     </div>
@@ -127,33 +141,23 @@
             <div class="col-md-4 mr-auto">
                 <h3>Everything is covered.</h3>
                 <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi commodo, tempus odio a,
-                    vestibulum nibh.
+                    ClassLine offer's AI powered virtual test conducting portal, with Autentication and full security guranteed.
+                    Everything is AI and automated.
                 </p>
             </div>
             <div class="col-md-7 offset-md-1">
                 <ul class="features-list">
-                    <li>Weekly new templates</li>
-                    <li>Access to new features</li>
-                    <li>MailChimp integration</li>
-                    <li>Stripe integration</li>
-                    <li>100 refund guarantee</li>
-                    <li>Advance SEO tools</li>
-                    <li>Free unlimited support</li>
+                    <li>Conducting test</li>
+                    <li>Access to those videos</li>
+                    <li>Virtual class</li>
+                    <li>Auto-evaulation</li>
+                    <li>ChatBot Support</li>
+                    <li>Text summarization</li>
+                    <li>Q/A hosting with AI</li>
                 </ul>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-md-8 col-12 divider top-divider mx-auto pt-5 text-center">
-                <h3>Try Knight free for 7 days</h3>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi commodo,
-                    tempus odio a, vestibulum nibh.</p>
-                <button class="btn btn-primary">
-                    Create your account
-                </button>
-            </div>
-        </div>
-    </div>
+      
     
 </section>
 
@@ -167,9 +171,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto text-center">
-                <h2 class="heading-black">Knight offers everything you need.</h2>
-                <p class="text-muted lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
+                <h2 class="heading-black">ClassLine offers everything you need.</h2>
+                <p class="text-muted lead">All the solution at the single place. Say Hello to the future!!!!!.</p>
             </div>
         </div>
         <div class="row mt-5">
@@ -181,9 +184,8 @@
                                 <span data-feather="edit-3" width="35" height="35"></span>
                             </div>
                         </div>
-                        <h5>Create once. Share everywhere.</h5>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
-                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                        <h5>Easier to take test.</h5>
+                        <p class="text-muted">All the test result's at the single place.</p>
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-success">
@@ -191,9 +193,8 @@
                                 <span data-feather="monitor" width="35" height="35"></span>
                             </div>
                         </div>
-                        <h5>Unlimited devices</h5>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
-                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                        <h5>Supports All Browser's</h5>
+                        <p class="text-muted">guranteed access in all the browser's!</p>
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-danger">
@@ -201,9 +202,8 @@
                                 <span data-feather="layout" width="35" height="35"></span>
                             </div>
                         </div>
-                        <h5>Beautiful tempates & layouts</h5>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
-                            nisi commodo, tempus odio a, vestibulum nibh.</p>
+                        <h5>AI powered test</h5>
+                        <p class="text-muted">No need to worry about the managing student's while writing the test.</p>
                     </div>
                     <div class="col-md-6 box">
                         <div class="icon-box box-info">
@@ -212,70 +212,7 @@
                             </div>
                         </div>
                         <h5>Available globally</h5>
-                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in
-                            nisi commodo, tempus odio a, vestibulum nibh.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-6">
-            <div class="col-md-6 mr-auto">
-                <h2>Knight is more than just a page builder.</h2>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis pulvinar vestibulum. Donec eleifend, sem sed dictum mattis, turpis purus placerat eros.</p>
-                <a href="#" class="btn btn-light">
-                    Try the live demo
-                </a>
-            </div>
-            <div class="col-md-5">
-                <div class="slick-about">
-                    <img src="{%static 'styles/images/blog-1.jpg'%}" class="img-fluid rounded d-block mx-auto" alt="Work 1"/>
-                    <img src="{%static 'styles/images/blog-2.jpg'%}" class="img-fluid rounded d-block mx-auto" alt="Work 2"/>
-                    <img src="{%static 'styles/images/blog-3.jpg'%}" class="img-fluid rounded d-block mx-auto" alt="Work 3"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-
-<!--faq section-->
-<section class="py-7" id="faq">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2>Frequently asked questions</h2>
-                <p class="text-muted lead">Answers to most common questions.</p>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-10 mx-auto">
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                        <h6>Can I try it for free?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>Do you have hidden fees?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>What are the payment methods you accept?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>How often do you release updates?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>What is your refund policy?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>How can I contact you?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem por legere me doming.</p>
+                        <p class="text-muted">Quick Access to all of the videos with the description.</p>
                     </div>
                 </div>
             </div>
@@ -286,66 +223,11 @@
                 <a href="#" class="btn btn-primary">Contact us</a>
             </div>
         </div>
-    </div>
-</section>
+       </section>
+
+
 
 <!--news section-->
-<section class="py-7 bg-dark section-angle top-left bottom-left" id="blog">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2 class="heading-black">News from Knight.</h2>
-                <p class="text-muted lead">What's new at Knight.</p>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="card">
-                    <a href="#">
-                        <img class="card-img-top img-raised" src="img/blog-1.jpg" alt="Blog 1">
-                    </a>
-                    <div class="card-body">
-                        <a href="#" class="card-title mb-2"><h5>We launch new iOS & Android mobile apps</h5></a>
-                        <p class="text-muted small-xl mb-2">Sep 27, 2018</p>
-                        <p class="card-text">Nam liber tempor cum soluta nobis eleifend option congue nihil imper,
-                            consectetur adipiscing elit. <a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <a href="#">
-                        <img class="card-img-top img-raised" src="img/blog-2.jpg" alt="Blog 2">
-                    </a>
-                    <div class="card-body">
-                        <a href="#" class="card-title mb-2"><h5>New update is available for the editor</h5></a>
-                        <p class="text-muted small-xl mb-2">August 16, 2018</p>
-                        <p class="card-text">Nam liber tempor cum soluta nobis eleifend option congue nihil imper,
-                            consectetur adipiscing elit. <a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <a href="#">
-                        <img class="card-img-top img-raised" src="img/blog-3.jpg" alt="Blog 3">
-                    </a>
-                    <div class="card-body">
-                        <a href="#" class="card-title mb-2"><h5>The story of building #1 page builder</h5></a>
-                        <p class="text-muted small-xl mb-2">December 2nd, 2017</p>
-                        <p class="card-text">Nam liber tempor cum soluta nobis eleifend option congue nihil imper,
-                            consectetur adipiscing elit. <a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-6">
-            <div class="col-md-6 mx-auto text-center">
-                <a href="#" class="btn btn-primary">View all posts</a>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!--footer-->
 <footer class="py-6">
