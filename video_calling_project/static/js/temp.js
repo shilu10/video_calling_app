@@ -1,41 +1,35 @@
 var alertRedInput = "#8C1010";
 var defaultInput = "rgba(10, 180, 180, 1)";
 
-function userNameValidation(usernameInput) {
-    var username = document.getElementById("username");
-    var issueArr = [];
-    if (/[-!@#$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/.test(usernameInput)) {
-        issueArr.push("No special characters!");
-    }
-    if (issueArr.length > 0) {
-        username.setCustomValidity(issueArr);
-        username.style.borderColor = alertRedInput;
-    } else {
-        username.setCustomValidity("");
-        username.style.borderColor = defaultInput;
-    }
+console.log("running")
+let form = document.getElementsByClassName('signupForm')
+console.log(form)
+
+// we need to send the call to get the token for the user, once he filled the fields and submitted the form.
+const fetch_token = async(event) => {
+    
+    // event.preventdefault will won't allow the default event to be happened, meaning in our eg submit event takes the
+    // user to the new page if it is specified else, it refreshs the page. so that will won't be happened.
+    event.preventDefault()
+   
+    const RoomName = event.target.room.value
+    const username = event.target.username.value
+    const response = await fetch(`get_token?channel=${RoomName}`)
+    const data = await response.json()
+    const token = data.token
+    const uid = data.uid
+    
+    sessionStorage.setItem('token', token)
+    sessionStorage.setItem('room', RoomName)
+    sessionStorage.setItem('UID', uid)
+
+    console.log(token, uid)
+    console.log(window)
+
+    // this bring the user to the room/ route and _self parameter
+    // is for keeping the user to stick to single tab while taking him
+    // to new route
+    window.open('room/', "_self")
 }
 
-function passwordValidation(passwordInput) {
-    var password = document.getElementById("password");
-    var issueArr = [];
-    if (!/^.{7,15}$/.test(passwordInput)) {
-        issueArr.push("Password must be between 7-15 characters.");
-    }
-    if (!/\d/.test(passwordInput)) {
-        issueArr.push("Must contain at least one number.");
-    }
-    if (!/[a-z]/.test(passwordInput)) {
-        issueArr.push("Must contain a lowercase letter.");
-    }
-    if (!/[A-Z]/.test(passwordInput)) {
-        issueArr.push("Must contain an uppercase letter.");
-    }
-    if (issueArr.length > 0) {
-        password.setCustomValidity(issueArr.join("\n"));
-        password.style.borderColor = alertRedInput;
-    } else {
-        password.setCustomValidity("");
-        password.style.borderColor = defaultInput;
-    }
-}
+form[0].addEventListener('submit', fetch_token)

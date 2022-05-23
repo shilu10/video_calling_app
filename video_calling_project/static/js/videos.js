@@ -123,3 +123,4 @@ function dropdown_values_for_second(){
 	return exam[val]
 } 
 
+sessionStorage.removeItem('video_file')
