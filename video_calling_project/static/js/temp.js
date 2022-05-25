@@ -1,8 +1,23 @@
 var alertRedInput = "#8C1010";
 var defaultInput = "rgba(10, 180, 180, 1)";
 
-console.log("running")
-let form = document.getElementsByClassName('signupForm')
+
+var texts = document.querySelectorAll(".change"); 
+texts.forEach((text) => {
+    text.addEventListener("mouseover", () => {
+    console.log("works", text.style.color="white")
+})
+})
+
+texts.forEach((text) => {
+    text.addEventListener("mouseout", () => {
+    console.log("works", text.style.color="#7FFFD4")
+})
+})
+
+
+
+const form = document.querySelector(".signupSection")
 console.log(form)
 
 // we need to send the call to get the token for the user, once he filled the fields and submitted the form.
@@ -32,4 +47,6 @@ const fetch_token = async(event) => {
     window.open('room/', "_self")
 }
 
-form[0].addEventListener('submit', fetch_token)
+form.addEventListener('submit', fetch_token)
+
+

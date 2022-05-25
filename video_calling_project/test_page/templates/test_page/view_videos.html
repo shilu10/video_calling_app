@@ -2,6 +2,7 @@
 {% load static %}
 
 <head>
+  <title>Videos</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/CDNSFree2/Plyr/plyr.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +31,7 @@
         <strong>ClassLine</strong>
       </a>
 
-      <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
+      <a id="home" class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
 
       <form class="form-inline" method="post" action="">
         <input id = "input" class="form-control mr-2" type="search" placeholder="Eg.18Bit048" aria-label="Search">
@@ -197,17 +198,10 @@
     font-family"Inter UI",-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size:larger
   }
-  
-        nav a+a{
-
-        padding : 0 40px 0 40px;
-        
-
-}
-    a{
-        font-size: 22px
-    }
-   
+  #home{
+    font-size: 24px;
+  }
+      
 
 </style>
 
