@@ -109,11 +109,11 @@ let blobs_recorded = [];
 
 camera_button.addEventListener('click', async function() {
    	camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-	 video.srcObject = camera_stream;
+    console.log(camera_stream)
+     video.srcObject = camera_stream;
 });
 
 stop_button.addEventListener("click", async() => {
-  navi
   video.srcObject = null;
 })
 

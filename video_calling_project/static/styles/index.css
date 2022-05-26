@@ -1,0 +1,79 @@
+
+body{
+    background:#333333;
+}
+h1{
+    color:#fff;
+    font-size:30px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.pricing_table{
+    color:#fff;
+    margin:10px 0;
+    background:#555;
+    text-align: center;
+    transition: all 0.30s linear 0s;
+}
+.pricing_table:hover{
+    background: #46B8DA;
+    transform: scale(1.09);
+        background-color:#263238;
+        z-index: 2;
+        box-shadow: 2px 2px 2px #000;
+}
+.pricing_table.active,
+.pricing_table .pricing_table_plan .btn-info.active{
+    background: #46B8DA;
+}
+.pricing_table:hover .pricing_table_plan .btn-info{
+    background:#46B8DA;
+    transform: scale(1.09);
+        background-color:#263238;
+        z-index: 2;
+        box-shadow: 2px 2px 2px #000;
+
+}
+.pricing_table_header{
+    padding:40px;
+}
+.pricing_table_header > i{
+    display: block;
+    font-size:40px;
+}
+.pricing_table_header .title{
+    display:block;
+    text-transform: capitalize;
+}
+.pricing_table_header .price-plan{
+    display:block;
+}
+.pricing_table_header .price-plan i{
+    font-size:16px;
+}
+.pricing_table_header .price{
+    font-size:40px;
+}
+.pricing_table_header .monthly_plan{
+    font-size:20px;
+}
+.pricing_table .pricing_table_plan{
+    border-top-right-radius:30px;
+    border-top-left-radius:30px;
+    padding:40px 20px;
+    background:#222;
+}
+.pricing_table .pricing_table_plan ul{
+    margin:0 0 50px;
+    padding:0;
+}
+.pricing_table .pricing_table_plan ul li{
+    list-style:none;
+    margin:15px 0;
+}
+.pricing_table .pricing_table_plan .btn-info{
+    padding:8px 40px;
+    background: transparent;
+    transition: all 0.30s linear 0s;
+}
+

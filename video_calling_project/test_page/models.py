@@ -9,7 +9,6 @@ subject = 'computer'
 dept = 'bsc'
 
 
-
 class computer_bsc(models.Model) :
     filename = models.CharField(max_length = 1000)
     def __str__(self) :
