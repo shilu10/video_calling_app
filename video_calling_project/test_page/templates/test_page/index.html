@@ -1,256 +1,116 @@
+<html>
+  {%load static%}
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Pricing Table</title>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  </head>
+<body>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+    <a class="navbar-brand" href="#">
+      <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
+      ClassLine
+    </a>
+  
+        <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#"><strong>About</strong></a>
+        <a class="nav-item nav-link" href="#"><strong>Contact</strong></a>
+        <a class="nav-item nav-link disabled" href="#"><strong>Donate</strong></a>
+      <a></a>
+    <form class="form-inline" >
+        <input id = "input" class="form-control mr-2" type="search" placeholder="View Videos" aria-label="Search">
+        <button onclick="video_puller()" class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+   
+  </nav>
 
-    <!DOCTYPE html>
-    {% load static %}
-    <html lang="en" >
-    <head>
-      <meta charset="UTF-8">
-      <title></title>
-      <link rel='stylesheet' href='https://cdn.plyr.io/3.6.2/plyr.css'>
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/luxonauta/luxa@1.0/dist/compressed/luxa.css'><link rel="stylesheet" href="./style.css">
-    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/temp.css' %}">
 
-    </head>
-    <body>
-    <!-- partial:index.partial.html -->
-    <main>
-      <section>
-        <div class="lx-container-80">
-          <div class="lx-row">
-            <div id="videoColumn" class="lx-column is-8 is-flex">
-              <div class="lx-row">
-                <div class="video-header">
-                  <h1>Spring</h1>
-                  <a class="nav-toggle text-small is-active">Hide navigation</a>
+
+
+
+<div class="container">
+    <h1>Pricing Table</h1>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <div class="pricing_table">
+                <div class="pricing_table_header">
+                    <i class="fa fa-home"></i>
+                    <h2 class="title">basic</h2>
+                    <span class="price-plan">
+                        <i class="fa fa-inr"></i>
+                     
+                    </span>
                 </div>
-                <!-- example of how to use with the HTML5 <video> tag -->
-                <video id="player" playsinline controls>
-                  
-                  <track kind="captions" label="English" src="path/video-en.vtt" srclang="en" default />
-                </video>
-                <div class="lx-card">
-                  <a class="accordion">Description</a>
-                  <div class="panel">
-                    <p>Spring is the latest short film produced by Blender Animation Studio. Made in
-                      Blender 2.8. Get the production files, assets and exclusive making-of videos by
-                      joining Blender Cloud at <a href="https://cloud.blender.org" target="_blank" rel="noopener noreferrer">https://cloud.blender.org</a>
-                    </p>
-                    <p>Spring is the story of a shepherd girl and her dog, who face ancient spirits in
-                      order to continue the cycle of life. This poetic and visually stunning short
-                      film was written and directed by Andy Goralczyk, inspired by his childhood in
-                      the mountains of Germany.
-                    </p>
-                    <p>The Spring team used the development version of Blender 2.80 for the entire
-                      production, before the software was in official Beta even. As for all of
-                      Blender’s Open Movies, the entire production process and all its source files
-                      are being shared on the production platform Blender Cloud.
-                    </p>
-                  </div>
+                <div class="pricing_table_plan">
+                    <ul>
+                        <li>3 User Fees</li>
+                        <li>Online Services</li>
+                       
+                        
+                    </ul>
+                    <button class="btn btn-info">Order Now</button>
                 </div>
-              </div>
             </div>
-            <div id="navColumn" class="lx-column is-active">
-              <div class="lx-row">
-                <div class="lx-card">
-    
-                  <div class="accordions">
-                    <a class="accordion">Start of the journey</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="15">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">The call to adventure</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="65">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">Meeting the mentor</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="115">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="lx-card">
-                  <div class="title">
-                    <h2>Frequently Asked Questions</h2>
-                  </div>
-                  <div class="accordions">
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-    </main><main>
-      <section>
-        <div class="lx-container-80">
-          <div class="lx-row">
-            <div id="videoColumn" class="lx-column is-8 is-flex">
-              <div class="lx-row">
-                <div class="video-header">
-                  <h1>Spring</h1>
-                  <a class="nav-toggle text-small is-active">Hide navigation</a>
+       
+        <div class="col-md-4 col-sm-6">
+            <div class="pricing_table">
+                <div class="pricing_table_header">
+                    <i class="fa fa-users"></i>
+                    <h2 class="title">Pro</h2>
+                    <span class="price-plan">
+                        <i class="fa fa-inr"></i>
+                        <span class="price">299</span>
+                        <span class="monthly_plan">/m</span>
+                    </span>
                 </div>
-                <!-- example of how to use with the HTML5 <video> tag -->
-                <video id="player" playsinline controls>
-                  
-                  <track kind="captions" label="English" src="path/video-en.vtt" srclang="en" default />
-                </video>
-                <div class="lx-card">
-                  <a class="accordion">Description</a>
-                  <div class="panel">
-                    <p>Spring is the latest short film produced by Blender Animation Studio. Made in
-                      Blender 2.8. Get the production files, assets and exclusive making-of videos by
-                      joining Blender Cloud at <a href="https://cloud.blender.org" target="_blank" rel="noopener noreferrer">https://cloud.blender.org</a>
-                    </p>
-                    <p>Spring is the story of a shepherd girl and her dog, who face ancient spirits in
-                      order to continue the cycle of life. This poetic and visually stunning short
-                      film was written and directed by Andy Goralczyk, inspired by his childhood in
-                      the mountains of Germany.
-                    </p>
-                    <p>The Spring team used the development version of Blender 2.80 for the entire
-                      production, before the software was in official Beta even. As for all of
-                      Blender’s Open Movies, the entire production process and all its source files
-                      are being shared on the production platform Blender Cloud.
-                    </p>
-                  </div>
+                <div class="pricing_table_plan">
+                    <ul>
+                        <li>3 User Fees</li>
+                        <li>Online Services</li>
+                        
+                    </ul>
+                    <button class="btn btn-info">Order Now</button>
                 </div>
-              </div>
             </div>
-            <div id="navColumn" class="lx-column is-active">
-              <div class="lx-row">
-                <div class="lx-card">
-    
-                  <div class="accordions">
-                    <a class="accordion">Start of the journey</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="15">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">The call to adventure</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="65">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">Meeting the mentor</a>
-                    <div class="panel">
-                      <a class="go-to" data-time="115">
-                        <i class="fas fa-external-link-alt"></i>
-                        <p>Go to this part</p>
-                      </a>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="lx-card">
-                  <div class="title">
-                    <h2>Frequently Asked Questions</h2>
-                  </div>
-                  <div class="accordions">
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                    <a class="accordion">Lorem ipsum dolor sit amet?</a>
-                    <div class="panel">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-    </main>
-    <!-- partial -->
-    <script type="text/javascript" src="{% static 'js/temp.js' %}"></script>
 
-      <script src='https://cdn.plyr.io/3.6.2/plyr.js'></script>
-    <script src='https://use.fontawesome.com/releases/v5.14.0/js/all.js'></script><script  src="./script.js"></script>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="pricing_table">
+              <div class="pricing_table_header">
+                  <i class="fa fa-users"></i>
+                  <h2 class="title">Pro</h2>
+                  <span class="price-plan">
+                      <i class="fa fa-inr"></i>
+                      <span class="price">299</span>
+                      <span class="monthly_plan">/m</span>
+                  </span>
+              </div>
+              <div class="pricing_table_plan">
+                  <ul>
+                      <li>3 User Fees</li>
+                      <li>Online Services</li>
+                      
+                  </ul>
+                  <button class="btn btn-info">Order Now</button>
+              </div>
+          </div>
+
+
+          
+      </div>
+
+      
+
+  </div>
+    </div>
     
-    </body>
-    </html>
-    
+</div>
+</body>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</html>
