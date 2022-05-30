@@ -1,79 +1,148 @@
 
-body{
-    background:#333333;
-}
-h1{
-    color:#fff;
-    font-size:30px;
-    text-align: center;
-    text-transform: capitalize;
-}
-.pricing_table{
-    color:#fff;
-    margin:10px 0;
-    background:#555;
-    text-align: center;
-    transition: all 0.30s linear 0s;
-}
-.pricing_table:hover{
-    background: #46B8DA;
-    transform: scale(1.09);
-        background-color:#263238;
-        z-index: 2;
-        box-shadow: 2px 2px 2px #000;
-}
-.pricing_table.active,
-.pricing_table .pricing_table_plan .btn-info.active{
-    background: #46B8DA;
-}
-.pricing_table:hover .pricing_table_plan .btn-info{
-    background:#46B8DA;
-    transform: scale(1.09);
-        background-color:#263238;
-        z-index: 2;
-        box-shadow: 2px 2px 2px #000;
+.model:hover{
 
-}
-.pricing_table_header{
-    padding:40px;
-}
-.pricing_table_header > i{
-    display: block;
-    font-size:40px;
-}
-.pricing_table_header .title{
-    display:block;
-    text-transform: capitalize;
-}
-.pricing_table_header .price-plan{
-    display:block;
-}
-.pricing_table_header .price-plan i{
-    font-size:16px;
-}
-.pricing_table_header .price{
-    font-size:40px;
-}
-.pricing_table_header .monthly_plan{
-    font-size:20px;
-}
-.pricing_table .pricing_table_plan{
-    border-top-right-radius:30px;
-    border-top-left-radius:30px;
-    padding:40px 20px;
-    background:#222;
-}
-.pricing_table .pricing_table_plan ul{
-    margin:0 0 50px;
-    padding:0;
-}
-.pricing_table .pricing_table_plan ul li{
-    list-style:none;
-    margin:15px 0;
-}
-.pricing_table .pricing_table_plan .btn-info{
-    padding:8px 40px;
-    background: transparent;
-    transition: all 0.30s linear 0s;
+	  transform: scale(1.010);
+          background-color:#263238;
+          z-index: 2;
+          box-shadow: 1px 1px 1px #000;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 100%;
+  font-weight: 400;
+  line-height: 1.65;
+  color: white;
+  background-color: #111212;
+  background-image: url("https://i.postimg.cc/fbSXnBct/video.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: soft-light;
+}
+
+
+
+/*
+
+The following rule will only run if your browser supports CSS grid.
+
+Remove or comment-out the code block below to see how the browser will fall-back to flexbox styling. 
+
+*/
+
+@supports (display: grid) {
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	.gallery,
+	.gallery-item {
+		margin: 0;
+	}
+}
+.gallery-item:hover{
+	  transform: scale(1.09);
+          background-color:#263238;
+          z-index: 2;
+          box-shadow: 2px 2px 2px #000;
+}
+
+.bg-custom-1 {
+  background-color: #85144b;
+}
+
+.bg-custom-2 {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+
+
+.lookbook-gallery .a11y-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.lookbook-gallery .a11y-only.focusable:active,
+.lookbook-gallery .a11y-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.lookbook-gallery img {
+  min-width: 10em;
+  max-width: 100%;
+  display: block;
+  background: #ddd;
+}
+.lookbook-gallery .model {
+  margin: 0;
+  position: relative;
+}
+.lookbook-gallery .model .model--caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 0.35em 1.2em 0.25em 0.9em;
+  justify-self: start;
+}
+.lookbook-gallery .model .model--caption .model-hed {
+  font-size: 1.25em;
+  margin: 0.5em 0;
+  font-family: Lora, serif;
+}
+.lookbook-gallery .model .model--caption .model-hed a {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+.lookbook-gallery .model .model--caption p {
+  font-size: 0.9375em;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.5;
+  margin: 0 0 0.5em 0;
+}
+@media (min-width: 45em) {
+  .lookbook-gallery .lookbook-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .lookbook-gallery .model {
+    flex: 47.5%;
+    margin: 0.5%;
+  }
+}
+@media (min-width: 65em) {
+  .lookbook-gallery .model {
+    flex: 24.25% 0;
+    margin: 0.50%;
+  }
+  @supports (display: grid) {
+    .lookbook-gallery .lookbook-grid {
+      display: grid;
+      grid-gap: 0.5em;
+      grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
+    .lookbook-gallery .model {
+      margin: 1;
+    }
+    .lookbook-gallery .model:nth-of-type(4n-1) {
+      grid-row-end: span 2;
+      grid-column-end: span 2;
+    }
+  }
+}
