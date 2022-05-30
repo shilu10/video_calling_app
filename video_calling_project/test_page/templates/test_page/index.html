@@ -1,116 +1,74 @@
-<html>
-  {%load static%}
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Pricing Table</title>
-    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-  </head>
-<body>
-  <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
-    <a class="navbar-brand" href="#">
-      <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
-      ClassLine
-    </a>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Exams</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/index.css' %}">
   
-        <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#"><strong>About</strong></a>
-        <a class="nav-item nav-link" href="#"><strong>Contact</strong></a>
-        <a class="nav-item nav-link disabled" href="#"><strong>Donate</strong></a>
-      <a></a>
-    <form class="form-inline" >
-        <input id = "input" class="form-control mr-2" type="search" placeholder="View Videos" aria-label="Search">
-        <button onclick="video_puller()" class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-   
-  </nav>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
 
-
-
-
-<div class="container">
-    <h1>Pricing Table</h1>
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <div class="pricing_table">
-                <div class="pricing_table_header">
-                    <i class="fa fa-home"></i>
-                    <h2 class="title">basic</h2>
-                    <span class="price-plan">
-                        <i class="fa fa-inr"></i>
-                     
-                    </span>
-                </div>
-                <div class="pricing_table_plan">
-                    <ul>
-                        <li>3 User Fees</li>
-                        <li>Online Services</li>
-                       
-                        
-                    </ul>
-                    <button class="btn btn-info">Order Now</button>
-                </div>
-            </div>
-        </div>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm" >
+        <a class="navbar-brand" href="#">
+          <img  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo" >
+          <strong style="color:aqua; font-family: Arial, Helvetica, sans-serif;" >ClassLine</strong>
+        </a>
        
-        <div class="col-md-4 col-sm-6">
-            <div class="pricing_table">
-                <div class="pricing_table_header">
-                    <i class="fa fa-users"></i>
-                    <h2 class="title">Pro</h2>
-                    <span class="price-plan">
-                        <i class="fa fa-inr"></i>
-                        <span class="price">299</span>
-                        <span class="monthly_plan">/m</span>
-                    </span>
-                </div>
-                <div class="pricing_table_plan">
-                    <ul>
-                        <li>3 User Fees</li>
-                        <li>Online Services</li>
-                        
-                    </ul>
-                    <button class="btn btn-info">Order Now</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-4 col-sm-6">
-          <div class="pricing_table">
-              <div class="pricing_table_header">
-                  <i class="fa fa-users"></i>
-                  <h2 class="title">Pro</h2>
-                  <span class="price-plan">
-                      <i class="fa fa-inr"></i>
-                      <span class="price">299</span>
-                      <span class="monthly_plan">/m</span>
-                  </span>
-              </div>
-              <div class="pricing_table_plan">
-                  <ul>
-                      <li>3 User Fees</li>
-                      <li>Online Services</li>
-                      
-                  </ul>
-                  <button class="btn btn-info">Order Now</button>
-              </div>
-          </div>
-
-
-          
-      </div>
-
+      </nav>
+      <div class="container"></div>
+      <div class="container"></div>
+      <div class="container"></div>
+      <div class="container"></div>
       
-
-  </div>
-    </div>
+<!-- partial:index.partial.html -->
+<div class="lookbook-gallery">
+    <h2 class="look-hed">Lookbook Gallery</h2>
+    <div class="lookbook-grid" role="region">
+      
     
-</div>
-</body>
+      <figure class="model">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU" height="350px" />
+         <figcaption class="model--caption">
+          <h3 class="model-hed">English</h3>
+          <p> start time 13 end time 16<p>
+         <button type="button" class="btn btn-info">Info</button>
+        </figcaption>
+      </figure>
+      
+      <figure class="model">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"   height="350px" />
+        <figcaption class="model--caption">
+          <h3 class="model-hed">Computer</h3>
+          <p>start time 12 end time 15<p>
+        <button type="button" class="btn btn-info">Info</button>
+        </figcaption>
+      </figure>
+      
+      <figure class="model">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"  height="350px" />
+         <figcaption class="model--caption">
+            <h3 class="model-hed">English</h3>
+            <p> start time 13 end time 16<p>
+           <button type="button" class="btn btn-info">Info</button>
+        </figcaption>
+      </figure>
+  
+      <figure class="model">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"  height="350px"  />
+        <figcaption class="model--caption">
+            <h3 class="model-hed">English</h3>
+            <p> start time 13 end time 16<p>
+           <button type="button" class="btn btn-info">Info</button>
+        </figcaption>
+      </figure>
+     
+  
+<!-- partial -->
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
 </html>
