@@ -1,81 +1,143 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Exams</title>
-  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/test_home.css' %}">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-
-
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-sm" >
-        <a class="navbar-brand" href="#">
-          <img  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo" >
-          <strong style="color:aqua; font-family: Arial, Helvetica, sans-serif;" >ClassLine</strong>
-        </a>
-        <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
-       
-      </nav>
-      <div class="container"></div>
-      <div class="container"></div>
-      <div class="container"></div>
-      <div class="container"></div>
-      
-<!-- partial:index.partial.html -->
-<div class="lookbook-gallery">
-    <h2 class="look-hed">Exams</h2>
-    <div class="lookbook-grid" role="region">
-      
+<html>
+    <head>
+        <title>
+            Test  Info
+        </title>
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/test_info.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
     
-      <figure class="model">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU" height="350px" />
-         <figcaption class="model--caption">
-          <h3 class="model-hed">English</h3>
-          <p> start DateTime: 02.06.2022, end Date: 03.06.2022<p>
-          <p>Start Time 6 End Time 9</p>
-         <button type="button" class="btn btn-info" onclick="route()">Info</button>
-        </figcaption>
-      </figure>
-      
-      <figure class="model">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"   height="350px" />
-        <figcaption class="model--caption">
-          <h3 class="model-hed">Computer</h3>
-          <p>start time 12 end time 15<p>
-        <button type="button" class="btn btn-info" onclick="route()">Info</button>
-        </figcaption>
-      </figure>
-      
-      <figure class="model">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"  height="350px" />
-         <figcaption class="model--caption">
-            <h3 class="model-hed">English</h3>
-            <p> start time 13 end time 16<p>
-           <button type="button" class="btn btn-info" onclick="route()">Info</button>
-        </figcaption>
-      </figure>
-  
-      <figure class="model">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3MTEBeNODyhUvq3EIgj1CyMBHECjmvqTwNA&usqp=CAU"  height="350px"  />
-        <figcaption class="model--caption">
-            <h3 class="model-hed">English</h3>
-            <p> start time 13 end time 16<p>
-           <button type="button" class="btn btn-info" onclick="route()">Info</button>
-        </figcaption>
-      </figure>
+    </head>
+    <body>
+        <style>
+            body{
+                background-color: black;
+            }
+        </style>
+       
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">UpComing Exams</h1>
+              <p class="lead">View the procedures and protocol before going into the exma. It is important to take a look at the instruction.</p>
+                
+            </div>
+          </div>
+        <div class="container">
+
+          <div class="ui link cards">
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">English</div>
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 25 june 2022</p> <p>End 26, june, 2022 </p>
+                </div>
+
+                <div class="description">
+                  
+                 
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity">
+                  validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">Computer</div>
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 29 june 2022</p> <p>End 26, june, 2022 </p>
+                </div>
+                <div class="description">
+                  Molly is a personal assistant living in Paris.
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity">
+                  validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">Science</div>
+                
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 27 june 2022</p> <p>End 26 june 2022 </p>
+                </div>
+                <div class="description">
+                  Elyse is a copywriter working in New York.
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity">
+                 validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  <script>
+      const cards = document.querySelectorAll(".card")
+      cards.forEach(card => {
+        card.addEventListener('click', ()=>{
+          window.open('/test', "__self")
+      })
+
+      })
+      const validity = document.querySelectorAll("#validity")
+      console.log(validity)
+
+      const dates = document.querySelectorAll(".date")
+      dates.forEach(date => {
+        var date = date.innerHTML
+        date = date.split(" ").slice(1, 4)
+        var examDate = Date.parse(date)
+        var CurrentDate = Date.now()
+
+        if (examDate > CurrentDate){
+          validity.forEach(val => {
+            console.log(val)
+            val.innerHTML.style.color = "blue";
+          })
+        }
+      })
      
-  
-<!-- partial -->
+  </script>
 
-
-</body>
-<script>
-    const route = (e) => {
-        window.open('/test', '_self')
-    }
-</script>
-</html>
+  </html>

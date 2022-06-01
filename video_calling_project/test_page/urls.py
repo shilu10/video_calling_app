@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.take_tst),
     path('s3url/', views.post_url),
     path('videos/', views.videos_page),
-    path('take/', views.test_page)
+    path('take/', views.test_page),
+    path('info', views.test_info)
 
 ]

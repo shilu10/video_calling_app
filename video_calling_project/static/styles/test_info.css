@@ -1,0 +1,18 @@
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 100%;
+    font-weight: 400;
+    line-height: 1.65;
+    color: white;
+    background-color: #111212;
+    background-image: url("https://i.postimg.cc/fbSXnBct/video.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+  }
+  
+.jumbotron jumbotron-fluid{
+    color:black
+}

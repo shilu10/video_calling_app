@@ -32,3 +32,6 @@ def videos_page(request) :
 
 def take_tst(request) :
     return render(request, 'test_page/test_home.html')
+
+def test_info(request):
+    return render(request, 'test_page/test_info.html')
