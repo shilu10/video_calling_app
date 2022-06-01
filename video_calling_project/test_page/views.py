@@ -2,7 +2,6 @@ from django.shortcuts import render
 import boto3
 import csv
 from django.http import JsonResponse, HttpResponse
-from .models import computer_bsc
 from .aws_connections import *
 import io, os
 import glob
@@ -32,4 +31,4 @@ def videos_page(request) :
     return render(request, 'test_page/view_videos.html')
 
 def take_tst(request) :
-    return render(request, 'test_page/index.html')
+    return render(request, 'test_page/test_home.html')
