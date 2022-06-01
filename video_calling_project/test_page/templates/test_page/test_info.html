@@ -1,105 +1,127 @@
-<html>
-    <head>
-        <title>
-            Autentication Page
-        </title>
-    </head>
-    <body>
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Exams</title>
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/test_home.css' %}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-        <div class="row pt-5 pricing-table">
-            <div class="col-12 mx-auto">
-                <div class="card-deck pricing-table">
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <h2 class="card-title text-primary mb-0 pt-4">Attend Virtual Test Event</h2>
-                            <div class="text-muted font-weight-medium mt-2">Student's</div>
-                            <ul class="list-unstyled pricing-list">
-                               
-                                <li>Through this students can attend</li>
-                                <li>the exams </li>
-                                
-                            </ul>
-                            <a href="test/" class="btn btn-primary">
-                                Attend
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <h2 class="card-title text-info mb-0 pt-4">Watch result videos</h2>
-                            <div class="text-muted font-weight-medium mt-2">Staff's</div>
-                            <ul class="list-unstyled pricing-list">
-                                <li>Gives you the access to all the videos</li>
-                                <li>of the students who </li>
-                                <li>attended the test..</li>
-                            </ul>
-                            <a href="/test/videos" class="btn btn-info">
-                                Watch
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <h2 class="card-title text-primary mb-0 pt-4">Conducting a virtual class</h2>
-                            <div class="text-muted font-weight-medium mt-2">Staff's</div>
-                            <ul class="list-unstyled pricing-list">
-                                <li>This allow's staff's to conduct</li>
-                                <li>a virtual class via video call</li>
-                                <li> with many functionalities..</li>
-                                
-                            </ul>
-                            <a href="class" class="btn btn-primary">
-                                Conduct
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-6">
-            <div class="col-md-4 mr-auto">
-                <h3>Everything is covered.</h3>
-                <p class="lead">
-                    ClassLine offer's AI powered virtual test conducting portal, with Autentication and full security guranteed.
-                    Everything is AI and automated.
-                </p>
-            </div>
-            <div class="col-md-7 offset-md-1">
-                <ul class="features-list">
-                    <li>Conducting test</li>
-                    <li>Access to those videos</li>
-                    <li>Virtual class</li>
-                    <li>Auto-evaulation</li>
-                    <li>ChatBot Support</li>
-                    <li>Text summarization</li>
-                    <li>Q/A hosting with AI</li>
-                </ul>
-            </div>
-        </div>
-        <style>
-             .pricing-table .pricing-list {
-    margin-bottom: 3rem;
-    margin-top: 2rem; }
-    .pricing-table .pricing-list li {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-      font-weight: 500; }
-  
-  .pricing-table .card {
-    transition: all .25s ease-out;
-    text-align: center; }
-    .pricing-table .card .card-body {
-      padding: 2.25rem 2rem; }
-    .pricing-table .card.active {
-      color: white;
-      background-color: transparent; }
-      .pricing-table .card.active h2, .pricing-table .card.active h3 {
-        color: #ffffff; }
-  
-        </style>
 
-    </body>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm" >
+        <a class="navbar-brand" href="#">
+          <img  src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo" >
+          <strong style="color:aqua; font-family: Arial, Helvetica, sans-serif;" >ClassLine</strong>
+        </a>
+        <a class="nav-item nav-link active" href="/"><strong>Home</strong> <span class="sr-only">(current)</span></a>
+       
+      </nav>
+      <div class="container">
+
+        <div class="ui link cards">
+          <div class="card">
+            <div class="image">
+              <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+            </div>
+            <div class="content">
+              <div class="header">Matt Giampietro</div>
+              <div class="meta">
+                <a>Friends</a>
+              </div>
+
+              <div class="description">
+                Matthew is an interior designer living in New York.
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated">
+                Joined in 2013
+              </span>
+              <span>
+                <i class="user icon"></i>
+                75 Friends
+              </span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="image">
+              <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+            </div>
+            <div class="content">
+              <div class="header">Molly</div>
+              <div class="meta">
+                <span class="date">Coworker</span>
+              </div>
+              <div class="description">
+                Molly is a personal assistant living in Paris.
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated">
+                Joined in 2011
+              </span>
+              <span>
+                <i class="user icon"></i>
+                35 Friends
+              </span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="image">
+              <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+            </div>
+            <div class="content">
+              <div class="header">Elyse</div>
+              <div class="meta">
+                <a>Coworker</a>
+              </div>
+              <div class="description">
+                Elyse is a copywriter working in New York.
+              </div>
+            </div>
+            <div class="extra content">
+              <span class="right floated">
+                Joined in 2014
+              </span>
+              <span>
+                <i class="user icon"></i>
+                151 Friends
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+<!-- partial:index.partial.html -->
+
+
+
+</body>
+<script>
+    const route = (e) => {
+        window.open('info', '_self')
+    }
+</script>
+
+<script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+<script>
+  const cards = document.querySelectorAll(".card")
+  cards.forEach(card => {
+    card.addEventListener('click', ()=>{
+      window.open('/test', "_self_")
+  })
+
+  })
+ 
+</script>
 </html>
