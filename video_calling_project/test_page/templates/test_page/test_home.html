@@ -130,47 +130,21 @@
       })
 
       })
-      const validity1 = document.querySelectorAll("#validity1");
-      const validity2 = document.querySelectorAll("#validity2");
-      const validity3 = document.querySelectorAll("#validity3");
-      const validites = [validity1, validity2, validity3];
+      window.addEventListener('load', () => {
+        cards.forEach(card => {
+          var valColor = card.childNodes[5].childNodes[1];
+          var startDate = card.childNodes[3].childNodes[4].previousSibling.querySelectorAll("p")[1].innerHTML;
 
-      const date1 = document.querySelectorAll(".date1")
-      const date2 = document.querySelectorAll(".date2")
-      const date3 = document.querySelectorAll(".date3") 
-      const dates = [date1, date2, date3];
-
-      window.addEventListener('load', ()=>{
-        
-        const indx = [ ]
-        var counter = 0 
-        dates.forEach(date => {
-          console.log(date)
-          var date = date[0].innerHTML
-          
-          date = date.split(" ").slice(1, 4)
-          var examDate = Date.parse(date)
+          startDate = startDate.split(" ").slice(1, 4)
+          var examDate = Date.parse(startDate) 
           var CurrentDate = Date.now()
-
+          console.log(examDate < CurrentDate)
           if (examDate < CurrentDate){
-            indx.push(counter)
-            counter += 1
+            console.log(valColor)
+            valColor.style.color = "red";
           }
-
-          var counter = 0
-          validites.forEach(vali => {
-            console.log(vali[0].innerHTML.color)
-
-            if (counter in indx){
-              vali[0].style.color="red";
-              indx.pop(counter)
-            }
-
-
-          })
-
-        }
-        )})
+        })
+      })
 
      
   </script>
