@@ -35,7 +35,7 @@
                 <div class="header">English</div>
                 <div class="meta">
                   <p></p>
-                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 25 june 2022</p> <p>End 26, june, 2022 </p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date1">Start 25 june 2022</p> <p>End 26, june, 2022 </p>
                 </div>
 
                 <div class="description">
@@ -44,7 +44,7 @@
                 </div>
               </div>
               <div class="extra content">
-                <span class="right floated" id="validity">
+                <span class="right floated" id="validity1" style="color:rgb(28, 236, 28)">
                   validity
                 </span>
                 <span>
@@ -62,14 +62,14 @@
                 <div class="header">Computer</div>
                 <div class="meta">
                   <p></p>
-                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 29 june 2022</p> <p>End 26, june, 2022 </p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date2">Start 29 june 2022</p> <p>End 26, june, 2022 </p>
                 </div>
                 <div class="description">
-                  Molly is a personal assistant living in Paris.
+                 
                 </div>
               </div>
               <div class="extra content">
-                <span class="right floated" id="validity">
+                <span class="right floated" id="validity2" style="color:rgb(52, 247, 52)">
                   validity
                 </span>
                 <span>
@@ -87,14 +87,14 @@
                 
                 <div class="meta">
                   <p></p>
-                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date">Start 27 june 2022</p> <p>End 26 june 2022 </p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date3">Start 1 june 2022</p> <p>End 26 june 2022 </p>
                 </div>
                 <div class="description">
-                  Elyse is a copywriter working in New York!
+                
                 </div>
               </div>
               <div class="extra content">
-                <span class="right floated" id="validity">
+                <span class="right floated" id="validity3" style="color:rgb(45, 221, 45)">
                  validity
                 </span>
                 <span>
@@ -116,27 +116,62 @@
       const cards = document.querySelectorAll(".card")
       cards.forEach(card => {
         card.addEventListener('click', ()=>{
-          window.open('/test', "__self")
+          
+          var valid = true
+          if (card.childNodes[5].childNodes[1].style.color === "red"){
+              valid = false
+          }
+          var dates = card.childNodes[3].childNodes[4].previousSibling.querySelectorAll("p")
+          sessionStorage.setItem("startDate", dates[1].innerHTML)
+          sessionStorage.setItem("endDate", dates[2].innerHTML)
+         
+          sessionStorage.setItem("valid", valid)
+          //window.open('info', "_self")
       })
 
       })
-      const validity = document.querySelectorAll("#validity")
-      console.log(validity)
+      const validity1 = document.querySelectorAll("#validity1");
+      const validity2 = document.querySelectorAll("#validity2");
+      const validity3 = document.querySelectorAll("#validity3");
+      const validites = [validity1, validity2, validity3];
 
-      const dates = document.querySelectorAll(".date")
-      dates.forEach(date => {
-        var date = date.innerHTML
-        date = date.split(" ").slice(1, 4)
-        var examDate = Date.parse(date)
-        var CurrentDate = Date.now()
+      const date1 = document.querySelectorAll(".date1")
+      const date2 = document.querySelectorAll(".date2")
+      const date3 = document.querySelectorAll(".date3") 
+      const dates = [date1, date2, date3];
 
-        if (examDate > CurrentDate){
-          validity.forEach(val => {
-            console.log(val)
-            val.innerHTML.style.color = "blue";
+      window.addEventListener('load', ()=>{
+        
+        const indx = [ ]
+        var counter = 0 
+        dates.forEach(date => {
+          console.log(date)
+          var date = date[0].innerHTML
+          
+          date = date.split(" ").slice(1, 4)
+          var examDate = Date.parse(date)
+          var CurrentDate = Date.now()
+
+          if (examDate < CurrentDate){
+            indx.push(counter)
+            counter += 1
+          }
+
+          var counter = 0
+          validites.forEach(vali => {
+            console.log(vali[0].innerHTML.color)
+
+            if (counter in indx){
+              vali[0].style.color="red";
+              indx.pop(counter)
+            }
+
+
           })
+
         }
-      })
+        )})
+
      
   </script>
 
