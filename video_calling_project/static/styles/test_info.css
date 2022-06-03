@@ -16,3 +16,12 @@ body {
 .jumbotron jumbotron-fluid{
     color:black
 }
+
+#cont{
+    background-color: #111212;
+    background-image: url("https://i.postimg.cc/fbSXnBct/video.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+}
