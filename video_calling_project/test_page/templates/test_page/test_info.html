@@ -5,196 +5,61 @@
         <title>
             Test  Info
         </title>
-        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
-        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/test_info.css' %}">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
         
-
         <script src="https://use.fontawesome.com/c47bc38e87.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    </head>
-    <body>
-        <style>
-            body{
-                background-color: black;
-            }
-        </style>
        
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4">UpComing Exams</h1>
-              <p class="lead">View the procedures and protocol before going into the exma. It is important to take a look at the instruction.</p>
-                
-            </div>
-        </div>
-
-        
-      
-        <div class="container" style="display:flex">
-          <ul style="list-style: none;">
-            <li style="color:white" ><i style='font-size:24px ;color:white' class='fas'>&#xf073;</i> <span class="start" style="margin-left: 10px;"></span></li>
-          </ul>
-          <ul style="list-style: none; margin-left:500px">
-            <li style="color:white" ><i style='font-size:24px ;color:white' class='fas'>&#xf073;</i> <span class="end" style="margin-left: 10px;"></span></li>
-           
-          </ul>
-        </div>
-        
-        <!--Progessive Bar-->
-        <br><br><br>
-        <div class="container">
-          <div class="progress">
-            <div class="progress-track"></div>
-            <div id="step1" class="progress-step">
-              Step One
-            </div>
-            <div id="step2" class="progress-step">
-              Step Two
-            </div>
-            <div id="step3" class="progress-step">
-              Step Three
-            </div>
-            <div id="step4" class="progress-step">
-              Complete
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="{% static 'styles/test_info.css'%}">
+        </head>
+        <body>
+          <div class="jumbo">
+              <div class="font-container">
+                <h1 class="display-3">English_18Bit0css_Exam</h1>
+                <p class="lead1">View the procedures and protocol before going into the exma. It is important to take a look at the instruction.</p>
             </div>
           </div>
-
-          <button onClick=next()>Next Step</button>
-        </div>
-
-      
-
-        <div class="container"  style="display: flex;
-        justify-content: center;">
-        <table class="ui very basic collapsing celled table" style="color: black;">
-          <thead>
-            <tr><th style="color:aliceblue">Employee</th>
-            <th style="color:aliceblue">Correct Guesses</th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td>
-                <h4 class="ui image header">
-                  <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=" class="ui mini rounded image">
-                  <div class="content" style="color:aliceblue">
-                    Lena
-                    <div class="sub header" style="color:aliceblue">Human Resources
-                  </div>
-                </div>
-              </h4></td>
-              <td>
-                22
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4 class="ui image header">
-                  <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=" class="ui mini rounded image">
-                  <div class="content" style="color:aliceblue">
-                    Matthew
-                    <div class="sub header" style="color:aliceblue">Fabric Design
-                  </div>
-                </div>
-              </h4></td>
-              <td>
-                15
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4 class="ui image header">
-                  <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=" class="ui mini rounded image">
-                  <div class="content" style="color:aliceblue">
-                    Lindsay
-                    <div class="sub header" style="color:aliceblue">Entertainment
-                  </div>
-                </div>
-              </h4></td>
-              <td>
-                12
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4 class="ui image header">
-                  <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=" class="ui mini rounded image">
-                  <div class="content" style="color:aliceblue">
-                    Mark
-                    <div class="sub header" style="color:aliceblue">Executive
-                  </div>
-                </div>
-              </h4></td>
-              <td>
-                11
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-     
+          <br><br><br>
+          <div class="container">
+            <div class="progress">
+              <div class="progress-track"></div>
+              <div id="step1" class="progress-step">
+                Instructions
+              </div>
+              <div id="step2" class="progress-step">
+                Compeleted Test 
+              </div>
+              <div id="step3" class="progress-step">
+                Results
+              </div>
+              
+            </div>
+          </div>
+         
         
 
-       
-    </body>
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+          <div class="bottom">/
+            <div class="instruction">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
 
- 
-    <script>
-      const start = document.querySelector('.start');
-      const end = document.querySelector('.end');
-      console.log(start, end)
-      start.innerHTML = sessionStorage.getItem("startDate")
-      end.innerHTML = sessionStorage.getItem("endDate")
+             <span class="a-instruction"><a href="">View Instructions</a></span>
+            </div>
+    
+            <div class="test">
 
-      if(Date.parse(sessionStorage.getItem("startDate")) < Date.now()){
-        const btn = document.querySelector('button');
-        btn.setAttribute("disabled", "")
+            </div>
+
+            <div class="dates">
+
+            </div>
+            
+
+            
+
+          </div>
+        
+<!-- partial -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src="{% static 'js/test_info.js' %}"></script>
       
-      }
-     
-    </script>
-
-    <script>
-      const step1 = document.getElementById('step1');
-const step2 = document.getElementById('step2');
-const step3 = document.getElementById('step3');
-const step4 = document.getElementById('step4');
-
-function next() {
-  if (step === 'step1') {
-    step = 'step2';
-    step1.classList.remove("is-active");
-    step1.classList.add("is-complete");
-    step2.classList.add("is-active");
-
-  } else if (step === 'step2') {
-    step = 'step3';
-    step2.classList.remove("is-active");
-    step2.classList.add("is-complete");
-    step3.classList.add("is-active");
-
-  } else if (step === 'step3') {
-    step = 'step4d';
-    step3.classList.remove("is-active");
-    step3.classList.add("is-complete");
-    step4.classList.add("is-active");
-
-  } else if (step === 'step4d') {
-    step = 'complete';
-    step4.classList.remove("is-active");
-    step4.classList.add("is-complete");
-
-  } else if (step === 'complete') {
-    step = 'step1';
-    step4.classList.remove("is-complete");
-    step3.classList.remove("is-complete");
-    step2.classList.remove("is-complete");
-    step1.classList.remove("is-complete");
-    step1.classList.add("is-active");
-  }}
-    </script>
+    </body>
   </html>
