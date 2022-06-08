@@ -157,12 +157,8 @@ body {
 }
 
 .dates{
-  background-color: aqua;
+  color: #fff;
   flex: 3;
-}
-.fas{
-  background-color: #dfe3e4;
-  float: left;
 }
 
 .instruction{
@@ -176,9 +172,17 @@ body {
 }
 .test{
   flex:3;
-  background-color: #2183dd;
+ 
 }
 
 .a-instruction{
   margin: 5px;
+}
+
+.start{
+  margin: 10px;
+}
+
+.end{
+  margin: 10px;
 }
