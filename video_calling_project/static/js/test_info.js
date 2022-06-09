@@ -38,3 +38,45 @@ function next() {
     step1.classList.add("is-active");
   }
 }
+const attempts = document.querySelector('.attempts')
+
+window.addEventListener("load", ()=>{
+  const button = document.querySelector('button');
+  console.log(button, "button")
+  const startValues = sessionStorage.getItem('startDate');
+  const endValues = sessionStorage.getItem('endDate');
+  const valid = sessionStorage.getItem('valid');
+  const start = document.querySelector('.start');
+  const end = document.querySelector('.end');
+  attempts.innerHTML = `Number of Attempts: ${localStorage.getItem("count")}`;
+
+  start.innerHTML = `Start Date: ${startValues.slice(5, startValues.length)}`;
+  end.innerHTML = `End Date: ${endValues.slice(3, endValues.length)}`;
+
+  if(valid==="false"){
+    console.log("s")
+    button.setAttribute('disabled', '');
+
+  }
+  
+});
+
+
+const handleSubmit = ( ) => {
+  let attemptCount = 0 ;
+  if (localStorage.getItem("count")){
+    attemptCount = localStorage.getItem("count");
+    attemptCount = Number(attemptCount)
+    attemptCount += Number(1);
+    localStorage.setItem("count", attemptCount);
+    attempts.innerHTML = `Number of Attempts: ${attemptCount}`
+    window.open("/test/take", "_self");
+  }
+  else{
+    localStorage.setItem("count", 1);
+    attempts.innerHTML = `Number of Attempts: ${1}`
+    window.open("/test/take", "_self");
+  }
+  
+  
+}

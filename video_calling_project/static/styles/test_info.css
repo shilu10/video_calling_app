@@ -5,6 +5,7 @@
   width: 100%;
   display: flex;
   color: #111212;
+  display: flex;
   }
 
 
@@ -104,12 +105,6 @@
   margin: 40px 80px;
 }
 
-button {
-  position: absolute;
-  right: 50px;
-  bottom: 20px;
-  cursor: pointer;
-}
 
 body {
   font-family: "Roboto", sans-serif;
@@ -159,6 +154,8 @@ body {
 .dates{
   color: #fff;
   flex: 3;
+ 
+  
 }
 
 .instruction{
@@ -172,7 +169,10 @@ body {
 }
 .test{
   flex:3;
- 
+  display: flex;
+
+  flex-wrap: wrap;
+
 }
 
 .a-instruction{
@@ -180,9 +180,80 @@ body {
 }
 
 .start{
-  margin: 10px;
+  margin: 20px;
+  position: relative;
+  bottom: 22px;
+  font-size: 19px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 .end{
+  position: relative;
+  margin: 20px;
+  bottom: 22px;
+  font-size: 19px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.start-date{
+  display: flex;
+  flex-direction: row;
   margin: 10px;
+  flex-wrap: wrap;
+}
+.end-date{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.fa-eye{
+  position: relative;
+  top: 40px;
+  float: left;
+}
+
+.attempts{
+  position: relative;
+  margin: 20px;
+  top:18px;
+  font-size: 19px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.attempts-wrapper{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+
+.button-wrapper{
+  margin: 10px;
+  position: relative;
+  top: 90px;
+  right: 170px;
+  
+}
+
+button{
+  border-radius: 8.5%;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 3.5px;
+  padding-bottom: 3.5px;
+  background-color: #2183dd;
+  border-color: #dfe3e4;
+  border-width: 2.5px;
+  color: #e9ecef;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button:hover{
+  background-color: #89bceb;
+  color: #111212;
+  cursor: pointer;
 }
