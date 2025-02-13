@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>
+            Test  Home
+        </title>
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'><link rel="stylesheet" href="{% static 'styles/test_info.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    
+    </head>
+    <body>
+        <style>
+            body{
+                background-color: black;
+            }
+        </style>
+       
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">UpComing Exams</h1>
+              <p class="lead">View the procedures and protocol before going into the exma. It is important to take a look at the instruction.</p>
+                
+            </div>
+          </div>
+        <div class="container" style=" display: flex position: relative;">
+
+          <div class="ui link cards">
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">English</div>
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date1">Start 25 june 2022</p> <p>End 26 june 2022 </p>
+                </div>
+
+                <div class="description">
+                  
+                 
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity1" style="color:rgb(28, 236, 28)">
+                  validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">Computer</div>
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date2">Start 29 june 2022</p> <p>End 26 june 2022 </p>
+                </div>
+                <div class="description">
+                 
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity2" style="color:rgb(52, 247, 52)">
+                  validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="image">
+                <img src="https://media.istockphoto.com/photos/many-hardbound-books-background-selective-focus-picture-id1209683444?k=20&m=1209683444&s=612x612&w=0&h=apRHyEOnUCQ7gXkIChHTyixwezHZ4Bm6tDyr7zwu32Y=">
+              </div>
+              <div class="content">
+                <div class="header">Science</div>
+                
+                <div class="meta">
+                  <p></p>
+                  <i style='font-size:24px' class='fas'>&#xf073;</i><p class="date3">Start 1 june 2022</p> <p>End 26 june 2022 </p>
+                </div>
+                <div class="description">
+                
+                </div>
+              </div>
+              <div class="extra content">
+                <span class="right floated" id="validity3" style="color:rgb(45, 221, 45)">
+                 validity
+                </span>
+                <span>
+                  <i style="font-size:24px" class="fa">&#xf017;</i>
+                  40 Questions
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </body>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  <script>
+      const cards = document.querySelectorAll(".card")
+      cards.forEach(card => {
+        card.addEventListener('click', ()=>{
+          
+          var valid = true
+          if (card.childNodes[5].childNodes[1].style.color === "red"){
+              valid = false
+          }
+          var dates = card.childNodes[3].childNodes[4].previousSibling.querySelectorAll("p")
+          sessionStorage.setItem("startDate", dates[1].innerHTML)
+          sessionStorage.setItem("endDate", dates[2].innerHTML)
+         
+          sessionStorage.setItem("valid", valid)
+          window.open('info', "_self")
+      })
+
+      })
+      window.addEventListener('load', () => {
+        cards.forEach(card => {
+          var valColor = card.childNodes[5].childNodes[1];
+          var startDate = card.childNodes[3].childNodes[4].previousSibling.querySelectorAll("p")[1].innerHTML;
+
+          startDate = startDate.split(" ").slice(1, 4)
+          var examDate = Date.parse(startDate) 
+          var CurrentDate = Date.now()
+          console.log(examDate < CurrentDate)
+          if (examDate < CurrentDate){
+            console.log(valColor)
+            valColor.style.color = "red";
+          }
+        })
+      })
+
+     
+  </script>
+
+  </html>

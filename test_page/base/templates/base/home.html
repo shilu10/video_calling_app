@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+    <section id="form-container">
+
+        <img id="logo" src="{% static 'images/chat-icon.png' %}"/>
+
+        <div class="login-box">
+            <h2>Your Class Room</h2>
+            <form id = 'form'>
+              <div class="user-box">
+                <input name="room" name="" required=""  style="text-transform:uppercase"/>
+                <label>Enter Your Room ID</label>
+              </div>
+              <div class="user-box">
+                <input name="name" name="" required=""  style="text-transform:uppercase"/>
+                <label>Enter Your Name </label>
+              </div>
+              
+              <div class="form-field">
+                <input type="submit" value="Join Stream" />
+            </form>
+          </div>
+    </section>
+</main>
+
+
+<script type = "text/javascript">
+  // this function will send the users to their respective rooms, based on the channel
+  // name they entered.
+  let form = document.getElementById('form');
+
+  let handlesubmit =  async (e) => {
+     // preventDefault means it won't allow the default behaviour of the event to be happened. Eg. if we are doing this
+     // for the submit event and then, it won't do that and refresh the page/
+      e.preventDefault()
+
+      
+      let room = e.target.room.value.toUpperCase()
+      let name = e.target.name.value
+
+      console.log(room, name)
+    // fetch returns the promises 
+      let response = await fetch(`get_token/?channel=${room}`)
+
+    // this gives us a token and the uid for the users
+    let data = await response.json()
+
+    console.log(data)
+
+    // storing it into new variables.
+    let UID = data.uid
+    let token = data.token
+
+    // we are storing those values in the session storage. session storage is nothing 
+    // but a way of storing the values for that particular session, unlike a local storage
+    // we can storage the values and also can retrieve the values from the sessionstorage.
+    sessionStorage.setItem('UID', UID)
+    sessionStorage.setItem('token', token)
+    sessionStorage.setItem('room', room)
+
+    // this will save the name in the session, so we can use it to show it in the
+    // video call
+    sessionStorage.setItem('name', name)
+
+    //link = window + "channel = " + `${room}` + "&" + token
+    // console.log(link, room)
+
+    // this will take us to the /room url with the current user
+    window.open("room/", "_self")
+
+
+  }
+  form.addEventListener('submit', handlesubmit)
+</script>
+{% endblock %}

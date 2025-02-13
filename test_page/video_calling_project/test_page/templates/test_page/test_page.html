@@ -1,0 +1,123 @@
+<html>
+ <head>
+   <title>Test Page</title>
+ </head>
+ <body>
+   <button id ="start">Start</button>
+    <button id ="stop">Stop</button>
+
+
+    <button id="start-camera">Start Camera</button>
+<video id="video" width="320" height="240" autoplay></video>
+<button id="start-record">Start Recording</button>
+<button id="stop-record">Stop Recording</button>
+
+ </body>
+ 
+ 
+ <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ <script type = "module">
+
+// getting the start and stop element from the html.
+let start = document.getElementById('start'),
+stop  = document.getElementById('stop'),
+mediaRecorder;
+
+// event listener for the starting of the recording
+start.addEventListener('click', async function(){
+  console.log("started")
+  let stream = await recordScreen();
+  let mimeType = 'video/mp3';
+  mediaRecorder = createRecorder(stream, mimeType);
+let node = document.createElement("p");
+  node.textContent = "Started recording";
+  document.body.appendChild(node);
+})
+
+// Event Listener for the stop 
+stop.addEventListener('click', function(){
+  mediaRecorder.stop();
+  let node = document.createElement("p");
+  node.textContent = "Stopped recording";
+  document.body.appendChild(node);
+})
+
+// This function will get the screenrecording from the user with their permission.
+async function recordScreen() {
+  return await navigator.mediaDevices.getDisplayMedia({
+      audio: true, 
+      video: { mediaSource: "screen"}
+  });
+}
+
+// creating the recorder
+function createRecorder (stream, mimeType) {
+// the stream data is stored in this array
+let recordedChunks = []; 
+
+// creating a new stream
+const mediaRecorder = new MediaRecorder(stream);
+
+// if there is an stream available pushing to the array.
+mediaRecorder.ondataavailable = function (e) {
+  if (e.data.size > 0) {
+    recordedChunks.push(e.data);
+  }  
+};
+
+// when recording stops, this will be executed.
+mediaRecorder.onstop = async ( ) => {
+ // we are combining the recordedchunks into blob. So we can upload it or download it.
+ const blob = new Blob(recordedChunks, {
+    
+      type: 'video/mp4'
+       
+  });
+
+  // getting presigned url from our backend server, params is the name of the subject
+  // he or she writing
+  const url = await axios.get('s3url/',{params: { folder_name : 'computer_bscit', name : '18Bit04' }})
+  
+  console.log(url)
+  // posting the video to the s3 bucket, with the presigned url from the backend.
+  // metadata will be stored in the s3 bucket metadata, it tells what kind of the data
+  // is in the file.
+  // if we change the metadata type, then the video cannot be displayed in the browser.
+  await axios.put(url.data, blob, { headers: {'Content-Type': 'video/mp4'}})
+
+  
+  
+  //empty the array for reuse.
+  recordedChunks = [];
+   
+};
+
+// For every 200ms the stream data will be stored in a separate chunk.
+mediaRecorder.start(200); 
+return mediaRecorder;
+}
+
+let camera_button = document.querySelector("#start-camera");
+let video = document.querySelector("#video");
+let start_button = document.querySelector("#start-record");
+let stop_button = document.querySelector("#stop-record");
+let download_link = document.querySelector("#download-video");
+
+let camera_stream = null;
+let media_recorder = null;
+let blobs_recorded = [];
+
+camera_button.addEventListener('click', async function() {
+   	camera_stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+    console.log(camera_stream)
+     video.srcObject = camera_stream;
+});
+
+stop_button.addEventListener("click", async() => {
+  video.srcObject = null;
+})
+
+
+
+</script>
+</html>

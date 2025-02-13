@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>
+            Test  Info
+        </title>
+        
+        <script src="https://use.fontawesome.com/c47bc38e87.js"></script>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="{% static 'styles/test_info.css'%}">
+        </head>
+        <body>
+          <div class="jumbo">
+              <div class="font-container">
+                <h1 class="display-3">English_18Bit0css_Exam</h1>
+                <p class="lead1">View the procedures and protocol before going into the exma. It is important to take a look at the instruction.</p>
+            </div>
+          </div>
+          <br><br><br>
+          <div class="container">
+            <div class="progress">
+              <div class="progress-track"></div>
+              <div id="step1" class="progress-step">
+                Instructions
+              </div>
+              <div id="step2" class="progress-step">
+                Compeleted Test 
+              </div>
+              <div id="step3" class="progress-step">
+                Results
+              </div>
+              
+            </div>
+          </div>
+         
+        
+
+          <div class="bottom">
+            <div class="instruction">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i>
+              
+
+             <span class="a-instruction"><a href="">View Instructions</a></span>
+            </div>
+    
+            <div class="test">
+              <div class="attempts-wrapper">
+                <i class="fa fa-eye" aria-hidden="true" style="font-size:23px"></i>
+                <p class="attempts">Number of Attempts</p>
+              </div>
+              <div class="button-wrapper">
+                <button type="button" onclick="handleSubmit()">Attend</button>
+              </div>
+            </div>
+
+            <div class="dates">
+              <div class="start-date">
+                <i class="fa fa-calendar" aria-hidden="true" style="font-size:23px"></i>
+                <p class="start" >Start Data: </p>
+              </div>
+
+              <div class="end-date">
+                <i class="fa fa-calendar" aria-hidden="true" style="font-size:23px"></i>
+                <p class="end">End Date: </p>
+              </div>
+            </div>
+            
+
+            
+
+          </div>
+        
+<!-- partial -->
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src="{% static 'js/test_info.js' %}"></script>
+      
+    </body>
+  </html>
